@@ -18,9 +18,10 @@ public class HomeController {
 	@GetMapping("/")
     public String mostrarPaginaInicio(Model model) {
 		
+		//LISTA DE ESTACIONES
 		List<Estacion> estaciones = estacionRepository.findAll();
-		
 		model.addAttribute("estaciones", estaciones);
+		
         return "Index";
     }
 }

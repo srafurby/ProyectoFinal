@@ -1,0 +1,6 @@
+// Obtenemos la fecha actual
+const fechaActual = new Date().toISOString().split('T')[0];
+
+// Establecemos la fecha mínima permitida en el input
+document.getElementById("ida").setAttribute("min", fechaActual);
+document.getElementById("vuelta").setAttribute("min", fechaActual);
