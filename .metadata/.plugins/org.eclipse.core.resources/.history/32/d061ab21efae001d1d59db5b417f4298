@@ -1,5 +1,0 @@
-package com.proyectoFinal.Interfaces;
-
-public interface EstacionRepository extends JpaRepository <Estacion, long> {
-
-}
