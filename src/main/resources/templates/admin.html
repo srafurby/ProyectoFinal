@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="shorcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+	rel="stylesheet">
+<script src="js/main.js"></script>
+<script src="https://kit.fontawesome.com/4fe01f8eed.js"
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+	crossorigin="anonymous"></script>
+<title>Admin Page</title>
+</head>
+
+<body>
+	<header>
+		<div
+			class="d-flex flex-wrap align-items-center justify-content-between">
+			<img class="logo" src="img/RailwayGranada_logo2.png" alt=""
+				width="10%">
+			<ul
+				class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+				<li><a href="home_page.html" class="nav-link text-black"> <i
+						class="fa-solid fa-train d-block mx-auto mb-1.5 fa-2x"></i> Trains
+				</a></li>
+				<li><a href="tickets.html" class="nav-link text-black"> <i
+						class="fa-solid fa-building d-block mx-auto mb-1.5 fa-2x"></i>
+						Stations
+				</a></li>
+				<li><a href="login_page.html" class="nav-link text-black">
+						<i class="fa-solid fa-clock d-block mx-auto mb-1.5 fa-2x"></i>
+						Schedule
+				</a></li>
+				<li><a href="login_page.html" class="nav-link text-black">
+						<i class="fa-solid fa-user d-block mx-auto mb-1.5 fa-2x"></i>
+						Users
+				</a></li>
+			</ul>
+		</div>
+	</header>
+	<main>
+		<section class="tablas" id="trenes">
+			<div class="container">
+				<div class="row header" id="titulo">
+					<div class="col-4">Train Number</div>
+					<div class="col-4">Capacity</div>
+					<div class="col-4">Add, remove or modify</div>
+				</div>
+				<div class="row datos" id="datos">
+					<div class="col-4" data-title="Train Number">
+						<a class="pasajeros">Nº1</a>
+					</div>
+					<div class="col-4" data-title="Capacity">59</div>
+					<div class="col-4 botones" data-title="Add, remove or modify">
+						<div class="add">
+							<button type="submit" id="add">Add</button>
+						</div>
+						<div class="remove">
+							<button type="submit" id="remove">Remove</button>
+						</div>
+						<div class="modify">
+							<button type="submit" id="modify">Modify</button>
+						</div>
+					</div>
+					<span class="divider"></span>
+				</div>
+				<div class="row datos" id="datos">
+					<div class="col-4" data-title="Train Number">
+						<a class="pasajeros">Nº2</a>
+					</div>
+					<div class="col-4" data-title="Capacity">83</div>
+					<div class="col-4 botones" data-title="Add, remove or modify">
+						<div class="add">
+							<button type="submit" id="add">Add</button>
+						</div>
+						<div class="remove">
+							<button type="submit" id="remove">Remove</button>
+						</div>
+						<div class="modify">
+							<button type="submit" id="modify">Modify</button>
+						</div>
+					</div>
+					<span class="divider"></span>
+				</div>
+			</div>
+		</section>
+		<section class="tablas" id="estaciones">
+			<div class="container">
+				<div class="row header" id="titulo">
+					<div class="col-6">Station</div>
+					<div class="col-6">Add, remove or modify</div>
+				</div>
+				<div class="row datos" id="datos">
+					<div class="col-6">
+						<p class="estaciones">Granada</p>
+					</div>
+					<div class="col-6 botones" data-title="Add, remove or modify">
+						<div class="add">
+							<button type="submit" id="add">Add</button>
+						</div>
+						<div class="remove">
+							<button type="submit" id="remove">Remove</button>
+						</div>
+						<div class="modify">
+							<button type="submit" id="modify">Modify</button>
+						</div>
+					</div>
+					<span class="divider"></span>
+				</div>
+				<div class="row datos" id="datos">
+					<div class="col-6">
+						<p class="estaciones">Salobreña</p>
+					</div>
+					<div class="col-6 botones" data-title="Add, remove or modify">
+						<div class="add">
+							<button type="submit" id="add">Add</button>
+						</div>
+						<div class="remove">
+							<button type="submit" id="remove">Remove</button>
+						</div>
+						<div class="modify">
+							<button type="submit" id="modify">Modify</button>
+						</div>
+					</div>
+					<span class="divider"></span>
+				</div>
+			</div>
+		</section>
+		<section class="tablas" id="horarios">
+			<div class="container">
+				<div class="row header" id="titulo">
+					<div class="col-6">Schedule</div>
+					<div class="col-6">Add, remove or modify</div>
+				</div>
+				<div class="row datos" id="datos">
+					<div class="col-6">
+						<p class="horarios">09:00h</p>
+					</div>
+					<div class="col-6 botones" data-title="Add, remove or modify">
+						<div class="add">
+							<button type="submit" id="add">Add</button>
+						</div>
+						<div class="remove">
+							<button type="submit" id="remove">Remove</button>
+						</div>
+						<div class="modify">
+							<button type="submit" id="modify">Modify</button>
+						</div>
+					</div>
+					<span class="divider"></span>
+				</div>
+				<div class="row datos" id="datos">
+					<div class="col-6">
+						<p class="horarios">18:45h</p>
+					</div>
+					<div class="col-6 botones" data-title="Add, remove or modify">
+						<div class="add">
+							<button type="submit" id="add">Add</button>
+						</div>
+						<div class="remove">
+							<button type="submit" id="remove">Remove</button>
+						</div>
+						<div class="modify">
+							<button type="submit" id="modify">Modify</button>
+						</div>
+					</div>
+					<span class="divider"></span>
+				</div>
+			</div>
+		</section>
+		<section class="tablas" id="usuarios">
+			<div class="container">
+				<div class="row header" id="titulo">
+					<div class="col-3">Name</div>
+					<div class="col-3">Last Name</div>
+					<div class="col-3">DNA</div>
+					<div class="col-3">Remove</div>
+				</div>
+				<div class="row datos" id="datos">
+					<div class="col-3">
+						<p class="username">John</p>
+					</div>
+					<div class="col-3">
+						<p class="userlastname">Black</p>
+					</div>
+					<div class="col-3">
+						<p class="userDna">36529418P</p>
+					</div>
+					<div class="col-3 botones" data-title="Add, remove or modify">
+						<div class="remove">
+							<button type="submit" id="remove">Remove</button>
+						</div>
+					</div>
+					<span class="divider"></span>
+				</div>
+				<div class="row datos" id="datos">
+					<div class="col-3">
+						<p class="username">Kiko</p>
+					</div>
+					<div class="col-3">
+						<p class="userlastname">Respetamusulmanes</p>
+					</div>
+					<div class="col-3">
+						<p class="userDna">76251839T</p>
+					</div>
+					<div class="col-3 botones" data-title="Add, remove or modify">
+						<div class="remove">
+							<button type="submit" id="remove">Remove</button>
+						</div>
+					</div>
+					<span class="divider"></span>
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+	<footer>
+		<p>&copy; Railway Granada 2023</p>
+	</footer>
+</body>
+</html>

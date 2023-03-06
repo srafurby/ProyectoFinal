@@ -38,7 +38,7 @@ public class LoginRegisterController {
 
 				if (passMD5.equals(pasajero.getPass())) {
 					session.setAttribute("usuario", pasajero);
-					if (pasajero.getAdmin()) {
+					if (pasajero.getAdmin()==1) {
 						return "redirect:admin";
 					} else {
 						return "redirect:user";
@@ -76,7 +76,7 @@ public class LoginRegisterController {
 		}
 
 		// Guardar el nuevo usuario en la base de datos
-		pasajero.setAdmin(false);
+		pasajero.setAdmin(0);
 		pasajerosRepository.save(pasajero);
 
 		// Redirigir al usuario a la página de inicio

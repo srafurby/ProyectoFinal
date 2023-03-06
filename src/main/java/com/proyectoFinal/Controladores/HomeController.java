@@ -33,10 +33,10 @@ public class HomeController {
 		Pasajero pasajero = (Pasajero) session.getAttribute("usuario");
 		if (pasajero == null) {
 			return "login_register";
-		} else if (pasajero.getAdmin()) {
-			return "admin";
+		} else if (pasajero.getAdmin()==1) {
+			return "redirect:admin";
 		} else {
-			return "user";
+			return "redirect:user";
 		}
 	}
 }

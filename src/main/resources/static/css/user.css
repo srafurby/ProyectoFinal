@@ -15,68 +15,77 @@
 	background-color: #b5d3f1;
 }
 
-.fa-house, .fa-train, .fa-user {
+* body header .fa-house, * body header .fa-train, * body header .fa-user
+	{
 	color: #001f58;
 	transition: all 0.3s ease;
 }
 
-.fa-house:hover, .fa-train:hover, .fa-user:hover {
+* body header .fa-house:hover, * body header .fa-train:hover, * body header .fa-user:hover
+	{
 	color: #2a67a6;
 }
 
-aside {
-	height: 91%;
-	width: 10%;
+* body aside {
+	width: 8%;
+	background: #001f58;
 	position: absolute;
-	left: 0;
-	overflow: auto;
-	background-color: #001f58;
+	height: 100vw;
+	overflow: hidden;
 }
 
-.menu {
+* body aside .menu {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	padding: 10%;
 }
 
-.menu .inactivo {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+* body aside .menu a {
 	text-decoration: none;
 	color: #fff;
-	padding: 20%;
-	font-size: 30px;
-	margin-top: 2%;
-	margin-bottom: 2%;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	padding-top: 30px;
+	padding: 10% 25%;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
-.menu a:hover {
+* body aside .menu a i {
+	font-size: 30px;
+	align-self: center;
+}
+
+* body aside .menu a:hover {
 	background: #b5d3f1;
 	color: #001f58;
 	border-radius: 5px;
 }
 
-.menu .activo {
-	font-size: 30px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-decoration: none;
-	color: #fff;
+* body aside .menu .activo {
 	background: #2a67a6;
 	border-radius: 5px;
 	padding: 10% 30%;
-	margin-top: 50px;
 }
 
-.contenido {
+* body aside .menu #botonUser {
+	margin-top:30%;
+}
+
+* body aside .menu .activo:hover {
+	background: #b5d3f1;
+	color: #001f58;
+}
+
+* body .contenido {
+	margin-left: 8%;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 }
 
-.user {
+* body .contenido .user {
 	background: #b5d3f1;
 	box-shadow: 3px 3px 3px 1px rgba(0, 49, 141, 0.5);
 	border-radius: 10px;
@@ -85,7 +94,7 @@ aside {
 	padding: 3% 3%;
 }
 
-.titulo p {
+* body .contenido .user .titulo p {
 	font-weight: 700;
 	font-size: 20px;
 	background-color: #001f58;
@@ -94,20 +103,32 @@ aside {
 	text-align: center;
 }
 
-.ejemplo {
+* body .contenido .user .ejemplo p {
 	font-size: 17px;
 }
 
-#fila {
+* body .contenido .user #primerafila {
 	text-align: center;
 }
 
-#fila5 {
+* body .contenido .user #segundafila {
+	text-align: center;
+}
+
+* body .contenido .user #tercerafila {
+	text-align: center;
+}
+
+* body .contenido .user #cuartafila {
+	text-align: center;
+}
+
+* body .contenido .user #quintafila {
 	display: flex;
 	justify-content: center;
 }
 
-#fila5 button {
+* body .contenido .user #quintafila button {
 	padding: 10px;
 	border-radius: 5px;
 	width: 25%;
@@ -118,33 +139,38 @@ aside {
 	transition: background-color 0.2s ease;
 }
 
-#fila5 button:hover {
+* body .contenido .user #quintafila button:hover {
 	background-color: #73a5d7;
 }
 
-.formulariodatos {
-	background: #b5d3f1;
-	box-shadow: 3px 3px 3px 1px rgba(0, 49, 141, 0.5);
-	border-radius: 10px;
-	margin: 2%;
-	width: 50%;
-	padding: 3%;
-	display: none;
+* body .contenido .formulariodatos form{
+	display:flex;
 	flex-direction: column;
 }
 
-.formulariodatos .form-floating {
+* body .contenido .formulariodatos {
+	background: #b5d3f1;
+	box-shadow: 3px 3px 3px 1px rgba(0, 49, 141, 0.5);
+	border-radius: 10px;
+	margin-top: 2%;
+	width: 50%;
+	padding: 3%;
+	display: flex;
+	flex-direction: column;
+}
+
+* body .contenido .formulariodatos .form-floating {
 	padding-bottom: 20px;
 }
 
-.formulariodatos .form-floating input {
+* body .contenido .formulariodatos .form-floating input {
 	border-radius: 15px;
 	box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
 	padding-bottom: 2%;
 }
 
-.formulariodatos button {
-	border-radius: 10px;
+* body .contenido .formulariodatos button {
+	border-radius: 5px;
 	width: 20%;
 	background-color: #2a67a6;
 	border: none;
@@ -152,19 +178,162 @@ aside {
 	align-self: center;
 }
 
-.formulariodatos button:hover {
+* body .contenido .formulariodatos button:hover {
 	background-color: #73a5d7;
 }
 
-footer {
+* body .contenido .tickettren {
+	margin-top: 2%;
+	width: 56%;
+	padding: 3% 3%;
+}
+
+* body .contenido .tickettren #carta {
+	background: #b5d3f1;
+	box-shadow: 3px 3px 3px 1px rgba(0, 49, 141, 0.5);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+* body .contenido .tickettren #carta #numero-tren p {
+	background: #001f58;
+	color: #fff;
+	width: 20%;
+	border-radius: 10px;
+	margin-left: 8px;
+	padding: 10px;
+	text-align: center;
+	font-weight: 600;
+}
+
+* body .contenido .tickettren #carta #iconos {
+	display: flex;
+	justify-content: left;
+}
+
+* body .contenido .tickettren #carta #iconos i {
+	padding-left: 10px;
+	font-size: 30px;
+	color: #001f58;
+}
+
+* body .contenido .tickettren #carta #text-card p {
+	padding-left: 15px;
+	font-weight: 500;
+	font-size: 20px;
+}
+
+* body .contenido .tickettren #carta #hora-card p {
+	padding-left: 15px;
+	font-weight: 400;
+}
+
+* body .contenido .tickettren #carta #hora p {
+	text-align: center;
+	margin-bottom: -2%;
+}
+
+* body .contenido .tickettren #carta #linea {
+	margin-top: -1rem;
+	display: flex;
+	align-items: center;
+}
+
+* body .contenido .tickettren #carta #linea i {
+	color: #001f58;
+	font-size: 15px;
+}
+
+* body .contenido .tickettren #carta .divider {
+	flex-grow: 1;
+	border-bottom: 1px solid rgba(0, 31, 88, 0.5);
+	margin: 5px;
+}
+
+* body .contenido .tickettren #carta .cancel {
+	padding-left: 30px;
+	font-size: 12px;
+}
+
+* body .contenido .tickettren #carta #buy {
+	border-left: 1px solid rgba(0, 31, 88, 0.5);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+* body .contenido .tickettren #carta #buy p {
+	font-size: 35px;
+	text-align: center;
+	color: #001f58;
+}
+
+* body .contenido .tickettren #carta #buy button {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	background-color: #2a67a6;
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+* body .contenido .tickettren #carta #buy button:hover {
+	background-color: #73a5d7;
+}
+
+* body .contenido .eliminarcuenta {
+	background: #b5d3f1;
+	box-shadow: 3px 3px 3px 1px rgba(0, 49, 141, 0.5);
+	border-radius: 10px;
+	margin: 2%;
+	width: 50%;
+	padding: 3% 3%;
+}
+
+* body .contenido .eliminarcuenta .signoff {
+	margin-bottom: 2%;
+}
+
+* body .contenido .eliminarcuenta .signoff button {
+	border-radius: 10px;
+	width: 100%;
+	padding: 3%;
+	background-color: #2a67a6;
+	color: #fff;
+	border: none;
+	transition: background-color 0.2s ease;
+	align-self: center;
+}
+
+* body .contenido .eliminarcuenta .signoff button:hover {
+	background-color: #73a5d7;
+}
+
+* body .contenido .eliminarcuenta .delete button {
+	border-radius: 10px;
+	width: 100%;
+	padding: 3%;
+	background-color: #a62a2a;
+	color: #fff;
+	border: none;
+	transition: background-color 0.2s ease;
+	align-self: center;
+}
+
+* body .contenido .eliminarcuenta .delete button:hover {
+	background-color: #d77373;
+}
+
+* body footer {
 	background-color: #001f58;
 	color: #fff;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	margin-left: 5.5%;
+	padding-top: 5px;
 	display: flex;
 	justify-content: center;
-	bottom: 0;
-	position: absolute;
-	height: 5%;
-	width: 100%;
-	margin-bottom: -1%;
-	align-items: center;
 }

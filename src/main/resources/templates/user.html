@@ -1,119 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/user.css">
-    <link rel="shorcut icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/4fe01f8eed.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/user.js"></script>
-    <title>User Page</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/user.css">
+<link rel="shorcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>	
+<script src="js/user.js"></script>
+<script src="https://kit.fontawesome.com/4fe01f8eed.js"
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+	crossorigin="anonymous"></script>
+<title>User Page</title>
 </head>
-
 <body>
-    <header>
-        <div class="d-flex flex-wrap align-items-center justify-content-between">
-            <img class="logo" src="img/RailwayGranada_logo2.png" alt="" width="10%">
-            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-                <li>
-                    <a href="/" class="nav-link text-black"> <i
-                            class="fa-solid fa-house d-block mx-auto mb-1.5 fa-2x"></i>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link text-black"> <i
-                            class="fa-solid fa-train d-block mx-auto mb-1.5 fa-2x"></i>
-                        Tickets
-                    </a>
-                </li>
-                <li>
-                    <a href="/login_register" class="nav-link text-black"> <i
-                            class="fa-solid fa-user d-block mx-auto mb-1.5 fa-2x"></i>
-                        User
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </header>
+	<header>
+		<div
+			class="d-flex flex-wrap align-items-center justify-content-between">
+			<img class="logo" src="img/RailwayGranada_logo2.png" alt=""
+				width="10%">
+			<ul
+				class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+				<li><a href="/" class="nav-link text-black"> <i
+						class="fa-solid fa-house d-block mx-auto mb-1.5 fa-2x"></i> Home
+				</a></li>
+				<li><a href="tickets.html" class="nav-link text-black"> <i
+						class="fa-solid fa-train d-block mx-auto mb-1.5 fa-2x"></i>
+						Tickets
+				</a></li>
+				<li><a href="user" class="nav-link text-black"> <i
+						class="fa-solid fa-user d-block mx-auto mb-1.5 fa-2x"></i> User
+				</a></li>
+			</ul>
+		</div>
+	</header>
 
-    <div class="container">
-        <aside>
-            <div class="menu">
-                <a class="activo"><i class="fa fa-user"></i>User</a>
-                <a class="inactivo"><i class="fa-solid fa-ticket"></i>Tickets</a>
-                <a class="inactivo"><i class="fa-solid fa-gear"></i>Settings</a>
-            </div>
-        </aside>
-    
-        <section class="contenido">
-            <div class="user" id="user">
-                <div class="row" id="fila">
-                    <div class="col-12 titulo" id="nombreapellido">
-                        <p>Name and Last Name</p>
-                    </div>
-                </div>
-                <div class="row" id="fila">
-                    <div class="col-12 ejemplo">
-                        <p>John Black</p>
-                    </div>
-                </div>
-                <div class="row" id="fila">
-                    <div class="col-6 titulo">
-                        <p>Date of birth</p>
-                    </div>
-                    <div class="col-6 titulo">
-                        <p>DNA</p>
-                    </div>
-                </div>
-                <div class="row" id="fila">
-                    <div class="col-6 ejemplo" id="fechanacimiento">
-                        <p>24/03/1998</p>
-                    </div>
-                    <div class="col-6 ejemplo" id="dni">
-                        <p>75936482M</p>
-                    </div>
-                </div>
-                <div class="row" id="fila5">
-                    <button onClick="mostrarFormulario()" id="botonFormulario" type="submit">Change your info</button>
-                </div>
-            </div>
-            <div class="formulariodatos" id="formulariodatos">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="name" placeholder="John" required>
-                    <label for="floatingInput">Name</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="lastname" placeholder="Black" required>
-                    <label for="floatingInput">Last Name</label>
-                </div>
-                <div class="form-floating">
-                    <input type="date" class="form-control" id="birthday" placeholder="02/02/2022" required>
-                    <label for="floatingInput">Date of birth</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="dni" placeholder="78936245A" required>
-                    <label for="floatingInput">DNA</label>
-                </div>
-                <button class="btn btn-lg btn-primary" type="submit" id="changeBtn">Change</button>
-            </div>
-        </section>
-    </div>
+	<aside>
+		<div class="menu">
+			<a class="activo" id='botonUser' onclick='mostrarUser()'><i
+				class="fa fa-user"></i>User</a> <a class="inactivo" id='botonTickets'
+				onclick='mostrarTickets()'><i class="fa-solid fa-ticket"></i>Tickets</a>
+			<a class="inactivo" id='botonSettings' onclick='mostrarSettings()'><i
+				class="fa-solid fa-gear"></i>Settings</a>
+		</div>
+	</aside>
 
-    <footer>
-        <p>&copy; Railway Granada 2023 </p>
-    </footer>
+	<main>
+		<section class="contenido">
+			<div class="user" id="user">
+				<div class="row" id="primerafila">
+					<div class="col-12 titulo" id="nombreapellido">
+						<p>Name and Last Name</p>
+					</div>
+				</div>
+				<div class="row" id="segundafila">
+					<div class="col-12 ejemplo">
+						<p style="text-transform: capitalize"
+							th:text="${pasajero.nombre + ' ' + pasajero.apellidos}"></p>
+					</div>
+				</div>
+				<div class="row" id="tercerafila">
+					<div class="col-6 titulo">
+						<p>Date of birth</p>
+					</div>
+					<div class="col-6 titulo">
+						<p>DNA</p>
+					</div>
+				</div>
+				<div class="row" id="cuartafila">
+					<div class="col-6 ejemplo" id="fechanacimiento">
+						<p th:text="${pasajero.f_nacimiento}"></p>
+					</div>
+					<div class="col-6 ejemplo" id="dni">
+						<p th:text="${pasajero.dni}"></p>
+					</div>
+				</div>
+				<div class="row" id="quintafila">
+					<button onClick="mostrarFormulario()" id="botonFormulario"
+						type="submit">Change your info</button>
+				</div>
+			</div>
+			<div th:if="${message}" class="alert alert-success" role="alert" id="alerta">
+			    <span th:text="${message}"></span>
+			</div>
+			<script>
+			  setTimeout(function() {
+			    $('#alerta').fadeOut('slow');
+			  }, 5000); // 5000 milisegundos = 5 segundos
+			</script>
+			<div class="formulariodatos" id="formulariodatos">
+				<form method="post" th:action="@{/user/{dni}(dni=${pasajero.dni})}" th:object="${pasajero}">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="name"
+							placeholder="John" th:field="*{nombre}" required> <label for="floatingInput">Name</label>
+					</div>
+					<div class="form-floating">
+						<input type="text" class="form-control" id="lastname"
+							placeholder="Black" th:field="*{apellidos}" required> <label for="floatingInput">Last
+							Name</label>
+					</div>
+					<div class="form-floating">
+						<input type="date" class="form-control" id="birthday"
+							placeholder="02/02/2022" th:field="*{f_nacimiento}" required> <label
+							for="floatingInput">Date of birth</label>
+					</div>
+					<div class="form-floating">
+						<input type="text" class="form-control" id="dni"
+							placeholder="78936245A" disabled> <label
+							for="floatingInput">DNA</label>
+					</div>
+					<button class="btn btn-lg btn-primary" type="submit" id="changeBtn">Change</button>
+				</form>
+			</div>
+			<div class="tickettren" id="tickettren">
+				<div class="row">
+					<div class="col-12">
+						<div class="container" id="carta">
+							<div class="row">
+								<div class="col-10">
+									<div class="row">
+										<div class="col-10" id="numero-tren">
+											<p>Train Nº1</p>
+										</div>
+										<div class="col-2" id="iconos">
+											<i class="fa-sharp fa-solid fa-suitcase-rolling"></i><i
+												class="fa-solid fa-paw"></i>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-2" id="text-card">
+											<p>Salobreña</p>
+										</div>
+										<div class="col-8"></div>
+										<div class="col-2" id="text-card">
+											<p>Granada</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12" id="hora">
+											<p>2h 30min</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-2" id="hora-card">
+											<p>11:20</p>
+										</div>
+										<div class="col-8" id="linea">
+											<span class="divider"></span><i class="fa-solid fa-train"></i>
+										</div>
+										<div class="col-2" id="hora-card">
+											<p>14:10</p>
+										</div>
+									</div>
+									<div class="row">
+										<p class="cancel">You can cancel the ticket</p>
+									</div>
+								</div>
+								<div class="col-2" id="buy">
+									<p>35€</p>
+									<button class="btn btn-primary mt-3">
+										Cancel Ticket<i class="fa-sharp fa-solid fa-xmark"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="eliminarcuenta" id="eliminarcuenta">
+				<div class="row">
+					<div class="col-12 signoff">
+						<form method="post" th:action="@{/cerrarSesion}">
+							<button type="submit" id="signoffBtn">Sign off</button>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 delete">
+						<button type="submit" id="deleteBtn">Delete account</button>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; Railway Granada 2023</p>
+	</footer>
 </body>
-
 </html>

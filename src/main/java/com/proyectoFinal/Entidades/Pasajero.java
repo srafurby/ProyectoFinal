@@ -18,7 +18,7 @@ public class Pasajero {
 	private String nombre;
 	private String apellidos;
 	private LocalDate f_nacimiento;
-	private Boolean admin;
+	private int admin;
 	private String pass;
 
 	private String email;
@@ -26,7 +26,7 @@ public class Pasajero {
 	public Pasajero() {
 	}
 
-	public Pasajero(String dni, String nombre, String apellidos, LocalDate f_nacimiento, Boolean admin, String pass,
+	public Pasajero(String dni, String nombre, String apellidos, LocalDate f_nacimiento, int admin, String pass,
 			String email) {
 		super();
 		this.dni = dni;
@@ -70,11 +70,11 @@ public class Pasajero {
 		this.f_nacimiento = f_nacimiento;
 	}
 
-	public Boolean getAdmin() {
+	public int getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Boolean admin) {
+	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
 
@@ -104,5 +104,4 @@ public class Pasajero {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 }

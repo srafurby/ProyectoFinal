@@ -8,6 +8,6 @@ public interface PasajerosRepository extends JpaRepository<Pasajero, String> {
 	Pasajero findByDni(String dni);
 
 	Pasajero findByEmail(String email);
-	
+
 	Pasajero findByEmailAndPass(String email, String pass);
 }
