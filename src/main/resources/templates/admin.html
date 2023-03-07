@@ -13,7 +13,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
 	rel="stylesheet">
-<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
 <script src="https://kit.fontawesome.com/4fe01f8eed.js"
 	crossorigin="anonymous"></script>
 <script defer
@@ -31,20 +31,22 @@
 				width="10%">
 			<ul
 				class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-				<li><a href="home_page.html" class="nav-link text-black"> <i
+				<li><a class="nav-link text-black" id="botonTren" onClick="mostrarTrenes()"> <i
 						class="fa-solid fa-train d-block mx-auto mb-1.5 fa-2x"></i> Trains
 				</a></li>
-				<li><a href="tickets.html" class="nav-link text-black"> <i
+				<li><a class="nav-link text-black" id="botonEstacion" onClick="mostrarEstaciones()"> <i
 						class="fa-solid fa-building d-block mx-auto mb-1.5 fa-2x"></i>
 						Stations
 				</a></li>
-				<li><a href="login_page.html" class="nav-link text-black">
-						<i class="fa-solid fa-clock d-block mx-auto mb-1.5 fa-2x"></i>
+				<li><a class="nav-link text-black" id="botonHorario" onClick="mostrarHorarios()"> <i
+						class="fa-solid fa-clock d-block mx-auto mb-1.5 fa-2x"></i>
 						Schedule
 				</a></li>
-				<li><a href="login_page.html" class="nav-link text-black">
-						<i class="fa-solid fa-user d-block mx-auto mb-1.5 fa-2x"></i>
-						Users
+				<li><a class="nav-link text-black" id="botonUsuario" onClick="mostrarUsuarios()"> <i
+						class="fa-solid fa-user d-block mx-auto mb-1.5 fa-2x"></i> Users
+				</a></li>
+				<li><a href="/" class="nav-link text-black" id="botonSalir"> <i
+						class="fa-solid fa-power-off d-block mx-auto mb-1.5 fa-2x"></i> Exit
 				</a></li>
 			</ul>
 		</div>
@@ -55,40 +57,21 @@
 				<div class="row header" id="titulo">
 					<div class="col-4">Train Number</div>
 					<div class="col-4">Capacity</div>
-					<div class="col-4">Add, remove or modify</div>
+					<div class="col-4"><button type="submit" class="addButton" id="addTren">Add</button> remove or modify</div>
 				</div>
-				<div class="row datos" id="datos">
+				<div class="row datos" id="datos" th:each="tren : ${trenes}">
 					<div class="col-4" data-title="Train Number">
-						<a class="pasajeros">Nº1</a>
+						<a class="pasajeros" th:text="'Nº'+${tren.numero_tren}"></a>
 					</div>
-					<div class="col-4" data-title="Capacity">59</div>
-					<div class="col-4 botones" data-title="Add, remove or modify">
-						<div class="add">
-							<button type="submit" id="add">Add</button>
-						</div>
+					<div class="col-4" data-title="Capacity">
+						<p th:text="${tren.asientos}"></p>
+					</div>
+					<div class="col-4 botones" data-title="Remove or modify">
 						<div class="remove">
-							<button type="submit" id="remove">Remove</button>
+							<button type="submit" id="removeTren">Remove</button>
 						</div>
 						<div class="modify">
-							<button type="submit" id="modify">Modify</button>
-						</div>
-					</div>
-					<span class="divider"></span>
-				</div>
-				<div class="row datos" id="datos">
-					<div class="col-4" data-title="Train Number">
-						<a class="pasajeros">Nº2</a>
-					</div>
-					<div class="col-4" data-title="Capacity">83</div>
-					<div class="col-4 botones" data-title="Add, remove or modify">
-						<div class="add">
-							<button type="submit" id="add">Add</button>
-						</div>
-						<div class="remove">
-							<button type="submit" id="remove">Remove</button>
-						</div>
-						<div class="modify">
-							<button type="submit" id="modify">Modify</button>
+							<button type="submit" id="modifyTren">Modify</button>
 						</div>
 					</div>
 					<span class="divider"></span>
@@ -99,38 +82,18 @@
 			<div class="container">
 				<div class="row header" id="titulo">
 					<div class="col-6">Station</div>
-					<div class="col-6">Add, remove or modify</div>
+					<div class="col-6"><button type="submit" class="addButton" id="addEstacion">Add</button> remove or modify</div>
 				</div>
-				<div class="row datos" id="datos">
+				<div class="row datos" id="datos" th:each="estacion : ${estaciones}">
 					<div class="col-6">
-						<p class="estaciones">Granada</p>
+						<p class="estaciones" th:text="${estacion.nombre}"></p>
 					</div>
-					<div class="col-6 botones" data-title="Add, remove or modify">
-						<div class="add">
-							<button type="submit" id="add">Add</button>
-						</div>
+					<div class="col-6 botones" data-title="Remove or modify">
 						<div class="remove">
-							<button type="submit" id="remove">Remove</button>
+							<button type="submit" id="removeEstacion">Remove</button>
 						</div>
 						<div class="modify">
-							<button type="submit" id="modify">Modify</button>
-						</div>
-					</div>
-					<span class="divider"></span>
-				</div>
-				<div class="row datos" id="datos">
-					<div class="col-6">
-						<p class="estaciones">Salobreña</p>
-					</div>
-					<div class="col-6 botones" data-title="Add, remove or modify">
-						<div class="add">
-							<button type="submit" id="add">Add</button>
-						</div>
-						<div class="remove">
-							<button type="submit" id="remove">Remove</button>
-						</div>
-						<div class="modify">
-							<button type="submit" id="modify">Modify</button>
+							<button type="submit" id="modifyEstacion">Modify</button>
 						</div>
 					</div>
 					<span class="divider"></span>
@@ -140,39 +103,31 @@
 		<section class="tablas" id="horarios">
 			<div class="container">
 				<div class="row header" id="titulo">
-					<div class="col-6">Schedule</div>
-					<div class="col-6">Add, remove or modify</div>
+					<div class="col-2">Schedule</div>
+					<div class="col-2">Train Nº</div>
+					<div class="col-2">Departure Station</div>
+					<div class="col-2">Arrival Station</div>
+					<div class="col-4"><button type="submit" class="addButton" id="addHorario">Add</button> remove or modify</div>
 				</div>
-				<div class="row datos" id="datos">
-					<div class="col-6">
-						<p class="horarios">09:00h</p>
+				<div class="row datos" id="datos" th:each="horario : ${horarios}">
+					<div class="col-2">
+						<p class="horarios" th:text="'Departure: '+${horario.salida}+' | Arrival: '+${horario.llegada}"></p>
 					</div>
-					<div class="col-6 botones" data-title="Add, remove or modify">
-						<div class="add">
-							<button type="submit" id="add">Add</button>
-						</div>
+					<div class="col-2">
+						<p class="horarios" th:text="'Nº'+ ${horario.tren}"></p>
+					</div>
+					<div class="col-2">
+						<p class="horarios" th:text="${horario.getEstacion_salida().getNombre()}"></p>
+					</div>
+					<div class="col-2">
+						<p class="horarios" th:text="${horario.getEstacion_llegada().getNombre()}"></p>
+					</div>
+					<div class="col-4 botones" data-title="Remove or modify">
 						<div class="remove">
-							<button type="submit" id="remove">Remove</button>
+							<button type="submit" id="removeHorario">Remove</button>
 						</div>
 						<div class="modify">
-							<button type="submit" id="modify">Modify</button>
-						</div>
-					</div>
-					<span class="divider"></span>
-				</div>
-				<div class="row datos" id="datos">
-					<div class="col-6">
-						<p class="horarios">18:45h</p>
-					</div>
-					<div class="col-6 botones" data-title="Add, remove or modify">
-						<div class="add">
-							<button type="submit" id="add">Add</button>
-						</div>
-						<div class="remove">
-							<button type="submit" id="remove">Remove</button>
-						</div>
-						<div class="modify">
-							<button type="submit" id="modify">Modify</button>
+							<button type="submit" id="modifyHorario">Modify</button>
 						</div>
 					</div>
 					<span class="divider"></span>
@@ -187,36 +142,19 @@
 					<div class="col-3">DNA</div>
 					<div class="col-3">Remove</div>
 				</div>
-				<div class="row datos" id="datos">
+				<div class="row datos" id="datos" th:each="pasajero : ${pasajeros}">
 					<div class="col-3">
-						<p class="username">John</p>
+						<p class="username" th:text="${pasajero.nombre}"></p>
 					</div>
 					<div class="col-3">
-						<p class="userlastname">Black</p>
+						<p class="userlastname" th:text="${pasajero.apellidos}"></p>
 					</div>
 					<div class="col-3">
-						<p class="userDna">36529418P</p>
+						<p class="userDna" th:text="${pasajero.dni}"></p>
 					</div>
-					<div class="col-3 botones" data-title="Add, remove or modify">
+					<div class="col-3 botones" data-title="Remove">
 						<div class="remove">
-							<button type="submit" id="remove">Remove</button>
-						</div>
-					</div>
-					<span class="divider"></span>
-				</div>
-				<div class="row datos" id="datos">
-					<div class="col-3">
-						<p class="username">Kiko</p>
-					</div>
-					<div class="col-3">
-						<p class="userlastname">Respetamusulmanes</p>
-					</div>
-					<div class="col-3">
-						<p class="userDna">76251839T</p>
-					</div>
-					<div class="col-3 botones" data-title="Add, remove or modify">
-						<div class="remove">
-							<button type="submit" id="remove">Remove</button>
+							<button type="submit" id="removePasajero">Remove</button>
 						</div>
 					</div>
 					<span class="divider"></span>

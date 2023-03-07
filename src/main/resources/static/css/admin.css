@@ -71,12 +71,12 @@
 	justify-content: space-around;
 }
 
-* body .tablas .container .datos .botones .add button {
+* body .tablas .addButton{
 	border: none;
 	background-color: #1c3225;
 	color: #fff;
 	padding: 10px;
-	width: 160%;
+	width: 20%;
 	border-radius: 5px;
 	font-weight: 600;
 }
@@ -110,9 +110,13 @@
 * body footer {
 	background-color: #001f58;
 	color: #fff;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding-top: 5px;
 	display: flex;
 	justify-content: center;
-	padding-top: 5px;
 }
 
 /*# sourceMappingURL=adminpage.css.map */

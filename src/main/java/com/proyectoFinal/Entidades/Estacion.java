@@ -10,20 +10,18 @@ import jakarta.persistence.Table;
 @Table(name = "estacion")
 public class Estacion {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ID_estacion;
 
 	private String nombre;
-	private Integer horario;
 
 	public Estacion() {
 	}
 
-	public Estacion(Long iD_estacion, String nombre, Integer horario) {
+	public Estacion(Long iD_estacion, String nombre) {
 		super();
 		ID_estacion = iD_estacion;
 		this.nombre = nombre;
-		this.horario = horario;
 	}
 
 	public Long getID_estacion() {
@@ -42,11 +40,4 @@ public class Estacion {
 		this.nombre = nombre;
 	}
 
-	public int getHorario() {
-		return horario;
-	}
-
-	public void setHorario(int horario) {
-		this.horario = horario;
-	}
 }
