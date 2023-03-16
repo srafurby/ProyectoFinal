@@ -21,11 +21,11 @@ public class Horario {
 	private Long tren;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_estacion_salida", insertable = false, updatable = false)
+	@JoinColumn(name = "id_estacion_salida", insertable = true, updatable = false)
 	private Estacion estacion_salida;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_estacion_llegada", insertable = false, updatable = false)
+	@JoinColumn(name = "id_estacion_llegada", insertable = true, updatable = false)
 	private Estacion estacion_llegada;
 
 	public Horario() {

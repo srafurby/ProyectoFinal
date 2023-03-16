@@ -13,6 +13,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
 	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/admin.js"></script>
 <script src="https://kit.fontawesome.com/4fe01f8eed.js"
 	crossorigin="anonymous"></script>
@@ -31,22 +32,30 @@
 				width="10%">
 			<ul
 				class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-				<li><a class="nav-link text-black" id="botonTren" onClick="mostrarTrenes()"> <i
+				<li><a class="nav-link text-black" id="botonTren"
+					onClick="mostrarTrenes()"> <i
 						class="fa-solid fa-train d-block mx-auto mb-1.5 fa-2x"></i> Trains
 				</a></li>
-				<li><a class="nav-link text-black" id="botonEstacion" onClick="mostrarEstaciones()"> <i
+				<li><a class="nav-link text-black" id="botonEstacion"
+					onClick="mostrarEstaciones()"> <i
 						class="fa-solid fa-building d-block mx-auto mb-1.5 fa-2x"></i>
 						Stations
 				</a></li>
-				<li><a class="nav-link text-black" id="botonHorario" onClick="mostrarHorarios()"> <i
+				<li><a class="nav-link text-black" id="botonHorario"
+					onClick="mostrarHorarios()"> <i
 						class="fa-solid fa-clock d-block mx-auto mb-1.5 fa-2x"></i>
 						Schedule
 				</a></li>
-				<li><a class="nav-link text-black" id="botonUsuario" onClick="mostrarUsuarios()"> <i
+				<li><a class="nav-link text-black" id="botonUsuario"
+					onClick="mostrarUsuarios()"> <i
 						class="fa-solid fa-user d-block mx-auto mb-1.5 fa-2x"></i> Users
 				</a></li>
-				<li><a href="/" class="nav-link text-black" id="botonSalir"> <i
-						class="fa-solid fa-power-off d-block mx-auto mb-1.5 fa-2x"></i> Exit
+				<li><a href="/" class="nav-link text-black" id="botonSalir">
+						<form method="post" th:action="@{/cerrarSesionAdmin}">
+							<button type="submit" id="signoffBtn" class="botonSalir">
+								<i class="fa-solid fa-power-off d-block mx-auto mb-1.5 fa-2x"></i>Exit
+							</button>
+						</form>
 				</a></li>
 			</ul>
 		</div>
@@ -57,7 +66,11 @@
 				<div class="row header" id="titulo">
 					<div class="col-4">Train Number</div>
 					<div class="col-4">Capacity</div>
-					<div class="col-4"><button type="submit" class="addButton" id="addTren">Add</button> remove or modify</div>
+					<div class="col-4">
+						<button type="submit" class="addButton" id="addTren"
+							onClick="mostrarAddTrenes()">Add</button>
+						remove or modify
+					</div>
 				</div>
 				<div class="row datos" id="datos" th:each="tren : ${trenes}">
 					<div class="col-4" data-title="Train Number">
@@ -68,7 +81,8 @@
 					</div>
 					<div class="col-4 botones" data-title="Remove or modify">
 						<div class="remove">
-							<button type="submit" id="removeTren">Remove</button>
+							<button type="submit" id="removeTren"
+								th:onclick="'confirmarEliminacionTren('+${tren.numero_tren}+')'">Remove</button>
 						</div>
 						<div class="modify">
 							<button type="submit" id="modifyTren">Modify</button>
@@ -82,7 +96,11 @@
 			<div class="container">
 				<div class="row header" id="titulo">
 					<div class="col-6">Station</div>
-					<div class="col-6"><button type="submit" class="addButton" id="addEstacion">Add</button> remove or modify</div>
+					<div class="col-6">
+						<button type="submit" class="addButton" id="addEstacion"
+							onClick="mostrarAddEstaciones()">Add</button>
+						remove or modify
+					</div>
 				</div>
 				<div class="row datos" id="datos" th:each="estacion : ${estaciones}">
 					<div class="col-6">
@@ -90,7 +108,8 @@
 					</div>
 					<div class="col-6 botones" data-title="Remove or modify">
 						<div class="remove">
-							<button type="submit" id="removeEstacion">Remove</button>
+							<button type="submit" id="removeEstacion"
+								th:onclick="'confirmarEliminacionEstacion('+${estacion.ID_estacion}+')'">Remove</button>
 						</div>
 						<div class="modify">
 							<button type="submit" id="modifyEstacion">Modify</button>
@@ -107,24 +126,32 @@
 					<div class="col-2">Train Nº</div>
 					<div class="col-2">Departure Station</div>
 					<div class="col-2">Arrival Station</div>
-					<div class="col-4"><button type="submit" class="addButton" id="addHorario">Add</button> remove or modify</div>
+					<div class="col-4">
+						<button type="submit" class="addButton" id="addHorario"
+							onClick="mostrarAddHorarios()">Add</button>
+						remove or modify
+					</div>
 				</div>
 				<div class="row datos" id="datos" th:each="horario : ${horarios}">
 					<div class="col-2">
-						<p class="horarios" th:text="'Departure: '+${horario.salida}+' | Arrival: '+${horario.llegada}"></p>
+						<p class="horarios"
+							th:text="'Departure: '+${horario.salida}+' | Arrival: '+${horario.llegada}"></p>
 					</div>
 					<div class="col-2">
 						<p class="horarios" th:text="'Nº'+ ${horario.tren}"></p>
 					</div>
 					<div class="col-2">
-						<p class="horarios" th:text="${horario.getEstacion_salida().getNombre()}"></p>
+						<p class="horarios"
+							th:text="${horario.getEstacion_salida().getNombre()}"></p>
 					</div>
 					<div class="col-2">
-						<p class="horarios" th:text="${horario.getEstacion_llegada().getNombre()}"></p>
+						<p class="horarios"
+							th:text="${horario.getEstacion_llegada().getNombre()}"></p>
 					</div>
 					<div class="col-4 botones" data-title="Remove or modify">
 						<div class="remove">
-							<button type="submit" id="removeHorario">Remove</button>
+							<button type="submit" id="removeHorario"
+								th:onclick="'confirmarEliminacionHorario('+${horario.ID_horario}+')'">Remove</button>
 						</div>
 						<div class="modify">
 							<button type="submit" id="modifyHorario">Modify</button>
@@ -154,15 +181,102 @@
 					</div>
 					<div class="col-3 botones" data-title="Remove">
 						<div class="remove">
-							<button type="submit" id="removePasajero">Remove</button>
+							<button type="submit" id="removePasajero"
+								th:data-parameter1="${pasajero.dni}"
+								th:onclick="confirmarEliminacionPasajero(this.getAttribute('data-parameter1'))">Remove</button>
 						</div>
 					</div>
 					<span class="divider"></span>
 				</div>
 			</div>
 		</section>
+		<section class="tablas" id="addTrenes">
+			<div class="container">
+				<div class="row datos">
+					<form name="addTrenes" method="post" th:action="@{/addTrenes}">
+						<h1>ADD Train</h1>
+						<div class="form-floating">
+							<input type="number" class="form-control" id="asientos"
+								name="asientos" placeholder="50" required> <label
+								for="floatingInput">Numer of Seats</label>
+						</div>
+						<br>
+						<button class="w-50 btn btn-lg btn-primary" type="submit"
+							id="addTrenButton">Send</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<section class="tablas" id="addEstaciones">
+			<div class="container">
+				<div class="row datos">
+					<form name="addEstaciones" method="post"
+						th:action="@{/addEstaciones}">
+						<h1>ADD Station</h1>
+						<div class="form-floating">
+							<input type="text" class="form-control" id="nombreEstacion"
+								name="nombreEstacion" placeholder="50" required> <label
+								for="floatingInput">Name of Station</label>
+						</div>
+						<br>
+						<button class="w-50 btn btn-lg btn-primary" type="submit"
+							id="addEstacionButton">Send</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<section class="tablas" id="addHorarios">
+			<div class="container">
+				<div class="row datos">
+					<form name="addHorarios" method="post" th:action="@{/addHorarios}">
+						<h1>ADD Schedule</h1>
+						<div class="form-floating">
+							<input type="number" class="form-control" id="salida"
+								name="salida" placeholder="20.00" required> <label
+								for="floatingInput">Departure time</label>
+						</div>
+						<div class="form-floating">
+							<input type="number" class="form-control" id="llegada"
+								name="llegada" placeholder="21.00" required> <label
+								for="floatingInput">Arrival time</label>
+						</div>
+						<div class="form-floating">
+							<select class="form-control" id="tren" name="tren" required>
+								<option th:each="tren : ${trenes}"
+									th:value="${tren.numero_tren}" th:text="${tren.numero_tren}"></option>
+							</select> <label for="floatingSelect">Train Assigned</label>
+						</div>
+						<div class="form-floating">
+							<select class="form-control" id="estacion_salida"
+								name="estacion_salida" required>
+								<option th:each="estacion : ${estaciones}"
+									th:value="${estacion.ID_estacion}" th:text="${estacion.nombre}"></option>
+							</select> <label for="floatingSelect">Departure Station</label>
+						</div>
+						<div class="form-floating">
+							<select class="form-control" id="estacion_llegada"
+								name="estacion_llegada" required>
+								<option th:each="estacion : ${estaciones}"
+									th:value="${estacion.ID_estacion}" th:text="${estacion.nombre}"></option>
+							</select> <label for="floatingSelect">Arrival Station</label>
+						</div>
+						<br>
+						<button class="w-50 btn btn-lg btn-primary" type="submit"
+							id="addHorarioButton">Send</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<div th:if="${message}" class="alert alert-success" role="alert"
+			id="alerta">
+			<span th:text="${message}"></span>
+		</div>
+		<script>
+			setTimeout(function() {
+				$('#alerta').fadeOut('slow');
+			}, 5000); // 5000 milisegundos = 5 segundos
+		</script>
 	</main>
-
 
 	<footer>
 		<p>&copy; Railway Granada 2023</p>

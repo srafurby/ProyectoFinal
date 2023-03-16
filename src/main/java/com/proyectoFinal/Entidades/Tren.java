@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 @Table(name = "tren")
 public class Tren {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long numero_tren;
 
 	private Long estacion;

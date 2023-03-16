@@ -2,12 +2,19 @@ package com.proyectoFinal.Services;
 
 import java.time.LocalDate;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.proyectoFinal.Entidades.Pasajero;
 import com.proyectoFinal.Interfaces.PasajerosRepository;
 
 import jakarta.servlet.http.HttpSession;
 
+@Service
 public class PasajeroService {
+	@Autowired
+	private PasajerosRepository pasajeroRepository;
+	
 	public void updatePasajero(String dni, String nombre, String apellidos, LocalDate f_nacimiento, PasajerosRepository pasajerosRepository, HttpSession session) {
 
 		Pasajero pasajero = pasajerosRepository.findByDni(dni);
@@ -19,5 +26,8 @@ public class PasajeroService {
 		pasajerosRepository.save(pasajero);
 		
 		session.setAttribute("usuario", pasajero);
+	}
+	public void eliminarPasajero(String id) {
+		pasajeroRepository.deleteById(id);
 	}
 }

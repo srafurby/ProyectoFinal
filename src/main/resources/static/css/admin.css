@@ -119,4 +119,9 @@
 	justify-content: center;
 }
 
+* body .botonSalir{
+	background-color: rgba(0, 0, 0, 0);
+	border: rgba(0, 0, 0, 0);
+}
+
 /*# sourceMappingURL=adminpage.css.map */
