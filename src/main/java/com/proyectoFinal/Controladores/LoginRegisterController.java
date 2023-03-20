@@ -45,7 +45,7 @@ public class LoginRegisterController {
 					}
 				} else {
 					model.addAttribute("pasajeroError",
-							"No existe ningun usuario registrado con ese Email o la contraseña es incorrecta");
+							"There is no user registered with that email or the password is incorrect");
 					return "login_register";
 				}
 			} catch (NoSuchAlgorithmException e) {
@@ -54,7 +54,7 @@ public class LoginRegisterController {
 
 		} else {
 			model.addAttribute("pasajeroError",
-					"No existe ningun usuario registrado con ese Email o la contraseña es incorrecta");
+					"There is no user registered with that email or the password is incorrect");
 			return "login_register";
 		}
 	}
@@ -64,14 +64,14 @@ public class LoginRegisterController {
 		// Verificar si ya existe un usuario con el mismo dni
 		Pasajero pasajeroDni = pasajerosRepository.findByDni(pasajero.getDni());
 		if (pasajeroDni != null) {
-			model.addAttribute("dniError", "Ya existe un usuario con ese DNI");
+			model.addAttribute("dniError", "There is already a user with that ID");
 			return "login_register";
 		}
 
 		// Verificar si ya existe un usuario con el mismo email
 		Pasajero pasajeroEmail = pasajerosRepository.findByEmail(pasajero.getEmail());
 		if (pasajeroEmail != null) {
-			model.addAttribute("emailError", "Ya existe un usuario con ese Email");
+			model.addAttribute("emailError", "There is already a user with that Email");
 			return "login_register";
 		}
 

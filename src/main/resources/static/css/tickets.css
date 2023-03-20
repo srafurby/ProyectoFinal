@@ -1,0 +1,290 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+* body {
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	background: url(../img/white.png) repeat fixed center;
+	background-size: 500px;
+}
+
+* body header {
+	padding: 0.5%;
+	text-align: center;
+	background-color: #b5d3f1;
+}
+
+* body header .fa-house, * body header .fa-train, * body header .fa-user
+	{
+	color: #001f58;
+	transition: all 0.3s ease;
+}
+
+* body header .fa-house:hover, * body header .fa-train:hover, * body header .fa-user:hover
+	{
+	color: #2a67a6;
+}
+
+* body .hero {
+	background: url(../img/granada1.jpg) no-repeat center;
+	background-size: cover;
+	height: 92vh;
+	text-align: center;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+* body .alert {
+	width: 40%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+* body .hero h1 {
+	align-self: center;
+	font-size: 60px;
+	font-weight: 700;
+	text-shadow: 2px 2px 10px #000;
+}
+
+* body .hero p {
+	align-self: center;
+	font-size: 25px;
+	font-weight: 400;
+	text-shadow: 2px 2px 2px #000;
+}
+
+* body .hero a {
+	font-size: 80px;
+	text-shadow: 2px 2px 10px #000;
+	color: #fff;
+	align-self: center;
+	border: none;
+}
+
+* body main {
+	padding: 20px;
+}
+
+* body main .formulario {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+}
+
+* body main .formulario label {
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+
+* body main .formulario select, * body main .formulario input {
+	margin-bottom: 15px;
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+* body main .formulario button {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	background-color: #2a67a6;
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+* body main .formulario button:hover {
+	background-color: #73a5d7;
+}
+
+* body #carta {
+	background: #b5d3f1;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+* body #carta #numero-tren p {
+	background: #001f58;
+	color: #fff;
+	width: 20%;
+	border-radius: 10px;
+	margin-left: 8px;
+	padding: 10px;
+	text-align: center;
+	font-weight: 600;
+}
+
+* body #carta #iconos {
+	display: flex;
+	justify-content: left;
+}
+
+* body #carta #iconos i {
+	padding-left: 10px;
+	font-size: 30px;
+	color: #001f58;
+}
+
+* body #carta #text-card p {
+	padding-left: 15px;
+	font-weight: 500;
+	font-size: 20px;
+}
+
+* body #carta #hora-card p {
+	padding-left: 15px;
+	font-weight: 400;
+}
+
+* body #carta #hora p {
+	text-align: center;
+	margin-bottom: -2%;
+}
+
+* body #carta #linea {
+	margin-top: -1rem;
+	display: flex;
+	align-items: center;
+}
+
+* body #carta #linea i {
+	color: #001f58;
+	font-size: 15px;
+}
+
+* body #carta .divider {
+	flex-grow: 1;
+	border-bottom: 1px solid rgba(0, 31, 88, 0.5);
+	margin: 5px;
+}
+
+* body #carta .cancel {
+	padding-left: 30px;
+	font-size: 12px;
+}
+
+* body #carta #buy {
+	border-left: 1px solid rgba(0, 31, 88, 0.5);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+* body #carta #buy p {
+	font-size: 35px;
+	text-align: center;
+	color: #001f58;
+}
+
+* body #carta #buy button {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	background-color: #2a67a6;
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+* body #carta #buy button:hover {
+	background-color: #73a5d7;
+}
+
+* body #trip {
+	display: flex;
+	flex-direction: column;
+	background: #001f58;
+	color: #fff;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 30px;
+}
+
+* body #trip #tuviaje p {
+	background: #b5d3f1;
+	color: #000;
+	width: 30%;
+	border-radius: 10px;
+	margin-left: 23px;
+	padding: 10px;
+	text-align: center;
+	font-weight: 600;
+}
+
+* body #trip #text-izq {
+	display: flex;
+	justify-content: start;
+	padding-left: 7%;
+}
+
+* body #trip #text-der {
+	display: flex;
+	justify-content: end;
+	padding-right: 7%;
+}
+
+* body #trip #arrow {
+	font-size: 20px;
+}
+
+* body #trip .col-4 {
+	display: flex;
+	justify-content: space-around;
+	font-weight: 500;
+}
+
+* body #trip .col-12 {
+	font-weight: 300;
+	font-style: italic;
+}
+
+* body #trip .negrita {
+	font-weight: 700;
+}
+
+* body #trip .espaciado {
+	padding-top: 5px;
+}
+
+* body #trip .divider {
+	flex-grow: 1;
+	border-bottom: 1px solid rgba(181, 211, 241, 0.5);
+	margin: 5px;
+}
+
+* body #trip .boton {
+	display: flex;
+	justify-content: center;
+}
+
+* body #trip .boton button {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	background-color: #2a67a6;
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+* body #trip .boton button:hover {
+	background-color: #73a5d7;
+}
+
+* body footer {
+	background-color: #001f58;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	padding-top: 5px;
+}
+
+/*# sourceMappingURL=tickets1.css.map */

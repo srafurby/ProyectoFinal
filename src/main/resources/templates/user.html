@@ -12,7 +12,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
 	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>	
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/user.js"></script>
 <script src="https://kit.fontawesome.com/4fe01f8eed.js"
 	crossorigin="anonymous"></script>
@@ -33,7 +33,7 @@
 				<li><a href="/" class="nav-link text-black"> <i
 						class="fa-solid fa-house d-block mx-auto mb-1.5 fa-2x"></i> Home
 				</a></li>
-				<li><a href="tickets.html" class="nav-link text-black"> <i
+				<li><a href="tickets" class="nav-link text-black"> <i
 						class="fa-solid fa-train d-block mx-auto mb-1.5 fa-2x"></i>
 						Tickets
 				</a></li>
@@ -89,29 +89,32 @@
 						type="submit">Change your info</button>
 				</div>
 			</div>
-			<div th:if="${message}" class="alert alert-success" role="alert" id="alerta">
-			    <span th:text="${message}"></span>
+			<div th:if="${message}" class="alert alert-success" role="alert"
+				id="alerta">
+				<span th:text="${message}"></span>
 			</div>
 			<script>
-			  setTimeout(function() {
-			    $('#alerta').fadeOut('slow');
-			  }, 5000); // 5000 milisegundos = 5 segundos
+				setTimeout(function() {
+					$('#alerta').fadeOut('slow');
+				}, 5000); // 5000 milisegundos = 5 segundos
 			</script>
 			<div class="formulariodatos" id="formulariodatos">
-				<form method="post" th:action="@{/user/{dni}(dni=${pasajero.dni})}" th:object="${pasajero}">
+				<form method="post" th:action="@{/user/{dni}(dni=${pasajero.dni})}"
+					th:object="${pasajero}">
 					<div class="form-floating">
 						<input type="text" class="form-control" id="name"
-							placeholder="John" th:field="*{nombre}" required> <label for="floatingInput">Name</label>
+							placeholder="John" th:field="*{nombre}" required> <label
+							for="floatingInput">Name</label>
 					</div>
 					<div class="form-floating">
 						<input type="text" class="form-control" id="lastname"
-							placeholder="Black" th:field="*{apellidos}" required> <label for="floatingInput">Last
-							Name</label>
+							placeholder="Black" th:field="*{apellidos}" required> <label
+							for="floatingInput">Last Name</label>
 					</div>
 					<div class="form-floating">
 						<input type="date" class="form-control" id="birthday"
-							placeholder="02/02/2022" th:field="*{f_nacimiento}" required> <label
-							for="floatingInput">Date of birth</label>
+							placeholder="02/02/2022" th:field="*{f_nacimiento}" required>
+						<label for="floatingInput">Date of birth</label>
 					</div>
 					<div class="form-floating">
 						<input type="text" class="form-control" id="dni"
@@ -124,12 +127,12 @@
 			<div class="tickettren" id="tickettren">
 				<div class="row">
 					<div class="col-12">
-						<div class="container" id="carta">
+						<div class="container" id="carta" th:each="ticket : ${tickets}">
 							<div class="row">
 								<div class="col-10">
 									<div class="row">
 										<div class="col-10" id="numero-tren">
-											<p>Train Nº1</p>
+											<p th:text="'Train Nº '+${ticket.id_tren}"></p>
 										</div>
 										<div class="col-2" id="iconos">
 											<i class="fa-sharp fa-solid fa-suitcase-rolling"></i><i
@@ -138,27 +141,30 @@
 									</div>
 									<div class="row">
 										<div class="col-2" id="text-card">
-											<p>Salobreña</p>
+											<p
+												th:text="${ticket.getId_horario().getEstacion_salida().getNombre()}"></p>
 										</div>
 										<div class="col-8"></div>
 										<div class="col-2" id="text-card">
-											<p>Granada</p>
+											<p
+												th:text="${ticket.getId_horario().getEstacion_llegada().getNombre()}"></p>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-12" id="hora">
-											<p>2h 30min</p>
+											<p
+												th:text="${ticket.getId_horario().llegada-ticket.getId_horario().salida+' hours'}"></p>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-2" id="hora-card">
-											<p>11:20</p>
+											<p th:text="${ticket.getId_horario().salida}"></p>
 										</div>
 										<div class="col-8" id="linea">
 											<span class="divider"></span><i class="fa-solid fa-train"></i>
 										</div>
 										<div class="col-2" id="hora-card">
-											<p>14:10</p>
+											<p th:text="${ticket.getId_horario().llegada}"></p>
 										</div>
 									</div>
 									<div class="row">
@@ -166,8 +172,10 @@
 									</div>
 								</div>
 								<div class="col-2" id="buy">
-									<p>35€</p>
-									<button class="btn btn-primary mt-3">
+									<p th:text="${ticket.precio}+'€'"></p>
+									<button class="btn btn-primary mt-3" type="submit"
+										id="removeHorario"
+										th:onclick="'confirmarCancelarTicket('+${ticket.getId_ticket()}+')'">
 										Cancel Ticket<i class="fa-sharp fa-solid fa-xmark"></i>
 									</button>
 								</div>

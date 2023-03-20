@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.proyectoFinal.Entidades.Estacion;
 import com.proyectoFinal.Entidades.Pasajero;
@@ -38,5 +40,12 @@ public class HomeController {
 		} else {
 			return "redirect:user";
 		}
+	}
+	
+	@PostMapping("/busquedaHorario")
+	public String busquedaHorario(@RequestParam("estacionSalida") Long idEstacionSalida,
+			@RequestParam("estacionLlegada") Long idEstacionLlegada, Model model) {
+		String url = "/buscadoHorario?estacionSalida=" + idEstacionSalida + "&estacionLlegada=" + idEstacionLlegada;
+	    return "redirect:" + url;
 	}
 }

@@ -76,3 +76,19 @@ function mostrarFormulario() {
 		document.getElementById("formulariodatos").style.display = 'none';
 	}
 }
+
+function confirmarCancelarTicket(idTicket) {
+	if (confirm("Are you sure to cancel the Ticket? This action cant be reverted")) {
+		cancelarTicket(idTicket);
+	}
+}
+
+function cancelarTicket(idTicket) {
+	$.ajax({
+		url: "/user/cancelarTicket/" + idTicket,
+		type: "POST",
+		success: function() {
+			window.location.href = "/user";
+		}
+	});
+}

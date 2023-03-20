@@ -34,7 +34,7 @@
 				<li><a href="/" class="nav-link text-black"> <i
 						class="fa-solid fa-house d-block mx-auto mb-1.5 fa-2x"></i> Home
 				</a></li>
-				<li><a href="#" class="nav-link text-black"> <i
+				<li><a href="/tickets" class="nav-link text-black"> <i
 						class="fa-solid fa-train d-block mx-auto mb-1.5 fa-2x"></i>
 						Tickets
 				</a></li>
@@ -48,11 +48,11 @@
 	<main>
 		<div id="form" class="formulario">
 			<div class="container">
-				<form>
+				<form action="#" th:action="@{/busquedaHorario}" method="post">
 					<div class="row">
 						<div class="col-6">
 							<label for="origen" class="form-label">DEPARTURE STATION</label>
-							<select id="origen" class="form-select">
+							<select id="origen" class="form-select" name="estacionSalida">
 								<option value="" disabled selected hidden>Select your
 									departure station</option>
 								<option th:each="estacion : ${estaciones}"
@@ -67,7 +67,7 @@
 					<div class="row">
 						<div class="col-6">
 							<label for="destino" class="form-label">ARRIVAL STATION</label> <select
-								id="destino" class="form-select">
+								id="destino" class="form-select" name="estacionLlegada">
 								<option value="" disabled selected hidden>Select your
 									departure station</option>
 								<option th:each="estacion : ${estaciones}"
