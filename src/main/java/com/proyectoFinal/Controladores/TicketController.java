@@ -127,23 +127,28 @@ public class TicketController {
 				Optional<Tren> tren_optional = trenRepository.findById(horario.getTren());
 				Tren tren = tren_optional.orElseThrow();
 				
-				int num_pasajeros = ticketService.num_pasajeros_tren(tren.getNumero_tren(), horario.getID_horario());
-				
-				if(tren.getAsientos()<=num_pasajeros) {
-					redirectAttributes.addFlashAttribute("mensajeError", "The train for this Schedule is full. Select another time");
+				if(ticketService.ticketDuplicado(pasajero.getDni(), id_horario)) {
+					redirectAttributes.addFlashAttribute("mensajeError", "You already bought a ticket for this Schedule!");
 					return "redirect:/tickets#alerta";
 				}else {
-					Ticket ticket = new Ticket();
+					int num_pasajeros = ticketService.num_pasajeros_tren(tren.getNumero_tren(), horario.getID_horario());
 					
-					ticket.setPasajero(pasajero.getDni());
-					ticket.setId_horario(horario);
-					ticket.setId_tren(tren.getNumero_tren());
-					ticket.setPrecio(precio);
-					
-					ticketRepository.save(ticket);
+					if(tren.getAsientos()<=num_pasajeros) {
+						redirectAttributes.addFlashAttribute("mensajeError", "The train for this Schedule is full. Select another time");
+						return "redirect:/tickets#alerta";
+					}else {
+						Ticket ticket = new Ticket();
+						
+						ticket.setPasajero(pasajero.getDni());
+						ticket.setId_horario(horario);
+						ticket.setId_tren(tren.getNumero_tren());
+						ticket.setPrecio(precio);
+						
+						ticketRepository.save(ticket);
 
-					redirectAttributes.addFlashAttribute("mensajeOK", "Purchased ticket, you can see and manage it in your user profile");
-					return "redirect:/tickets#alerta";
+						redirectAttributes.addFlashAttribute("mensajeOK", "Purchased ticket, you can see and manage it in your user profile");
+						return "redirect:/tickets#alerta";
+					}
 				}
 			}
 		}
