@@ -11,7 +11,7 @@ public class EstacionService {
 	@Autowired
 	private EstacionRepository estacionRepository;
 
-	public void eliminarEstacion(Long id) {
+	public void eliminarEstacion(Long id) { //METHOD TO DELETE THE STATIONS BY ID
 		estacionRepository.deleteById(id);
 	}
 }

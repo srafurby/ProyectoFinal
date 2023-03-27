@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2023 a las 16:31:58
+-- Tiempo de generación: 28-03-2023 a las 00:43:25
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.1
 
@@ -44,7 +44,7 @@ INSERT INTO `estacion` (`ID_estacion`, `nombre`) VALUES
 (5, 'Salobreña'),
 (6, 'Alhama de Granada'),
 (7, 'Guadix'),
-(9, 'Cuenca');
+(9, 'Cuenquilla');
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,7 @@ INSERT INTO `horario` (`id_horario`, `salida`, `llegada`, `tren`, `id_estacion_s
 (3, '21.00', '22.00', 2, 1, 3),
 (4, '21.00', '22.00', 3, 1, 2),
 (5, '17.00', '18.00', 16, 1, 4),
-(6, '16.00', '18.00', 18, 2, 9);
+(6, '17.00', '19.00', 3, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -142,7 +142,7 @@ INSERT INTO `tren` (`numero_tren`, `asientos`, `estacion`) VALUES
 (2, 55, 1),
 (3, 60, 1),
 (16, 2, 1),
-(18, 6, 1);
+(18, 8, 1);
 
 --
 -- Índices para tablas volcadas
@@ -177,9 +177,9 @@ ALTER TABLE `pasajeros`
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id_ticket`),
   ADD UNIQUE KEY `id_ticket` (`id_ticket`),
-  ADD KEY `dni_ticket_pasajero` (`pasajero`),
   ADD KEY `id_ticket_tren` (`id_tren`),
-  ADD KEY `id_ticket_horario` (`id_horario`);
+  ADD KEY `id_ticket_horario` (`id_horario`),
+  ADD KEY `dni_ticket_pasajero` (`pasajero`);
 
 --
 -- Indices de la tabla `tren`
@@ -208,7 +208,7 @@ ALTER TABLE `horario`
 -- AUTO_INCREMENT de la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id_ticket` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_ticket` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `tren`
@@ -232,7 +232,7 @@ ALTER TABLE `horario`
 -- Filtros para la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  ADD CONSTRAINT `dni_ticket_pasajero` FOREIGN KEY (`pasajero`) REFERENCES `pasajeros` (`dni`),
+  ADD CONSTRAINT `dni_ticket_pasajero` FOREIGN KEY (`pasajero`) REFERENCES `pasajeros` (`dni`) ON DELETE CASCADE,
   ADD CONSTRAINT `id_ticket_horario` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`),
   ADD CONSTRAINT `id_ticket_tren` FOREIGN KEY (`id_tren`) REFERENCES `tren` (`numero_tren`);
 COMMIT;

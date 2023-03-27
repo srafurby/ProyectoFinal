@@ -15,15 +15,17 @@ public class Estacion {
 
 	private String nombre;
 
+	//CONSTRUCTOR
 	public Estacion() {
 	}
 
 	public Estacion(Long iD_estacion, String nombre) {
 		super();
-		ID_estacion = iD_estacion;
+		this.ID_estacion = iD_estacion;
 		this.nombre = nombre;
 	}
 
+	//GETTER AND SETTER
 	public Long getID_estacion() {
 		return ID_estacion;
 	}

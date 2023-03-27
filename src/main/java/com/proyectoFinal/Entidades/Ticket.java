@@ -20,12 +20,13 @@ public class Ticket {
 
 	private Long id_tren;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)//THERE CAN BE MANY TICKETS ON A SINGLE TRAIN
 	@JoinColumn(name = "ID_horario", insertable = true, updatable = false)
 	private Horario id_horario;
 
 	private int precio;
 
+	//CONSTRUCTOR
 	public Ticket() {
 	}
 
@@ -38,6 +39,7 @@ public class Ticket {
 		this.precio = precio;
 	}
 
+	//GETTER AND SETTER
 	public Long getId_ticket() {
 		return id_ticket;
 	}
