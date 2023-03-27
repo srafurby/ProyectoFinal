@@ -29,10 +29,10 @@ public class UserController {
 	private TicketService ticketService;
 
 	@GetMapping("/user")
-	public String mostrarPaginaInicio(Model model, HttpSession session) {
-		Pasajero pasajero = (Pasajero) session.getAttribute("usuario");
+	public String mostrarPaginaInicio(Model model, HttpSession session) { //COLLECT THE INFORMATION OF MY USER SESSION
+		Pasajero pasajero = (Pasajero) session.getAttribute("usuario");  //SHOW THE USER SESSION
 		
-		List<Ticket> tickets = ticketService.buscarTicketByDni(pasajero.getDni());
+		List<Ticket> tickets = ticketService.buscarTicketByDni(pasajero.getDni()); //SEARCH THE TICKETS THIS PASSENGER HAVE
 		
 		model.addAttribute("pasajero", pasajero);
 		model.addAttribute("tickets", tickets);
@@ -40,7 +40,7 @@ public class UserController {
 		return "user";
 	}
 
-	@PostMapping("/user/{dni}")
+	@PostMapping("/user/{dni}") //CHANGE THE USER INFO
 	public String cambiarDatosUsuario(@PathVariable String dni, @RequestParam(value = "nombre") String nombre,
 			@RequestParam(value = "apellidos") String apellidos,
 			@RequestParam(value = "f_nacimiento") LocalDate f_nacimiento, RedirectAttributes redirectAttributes,
@@ -48,22 +48,22 @@ public class UserController {
 
 		PasajeroService pasajeroService = new PasajeroService();
 
-		pasajeroService.updatePasajero(dni, nombre, apellidos, f_nacimiento, pasajerosRepository, session);
+		pasajeroService.updatePasajero(dni, nombre, apellidos, f_nacimiento, pasajerosRepository, session); //CHANGE THE INFO
 
-		redirectAttributes.addFlashAttribute("message", "Usuario actualizado correctamente.");
-		return "redirect:/user";
+		redirectAttributes.addFlashAttribute("message", "User updated successfully."); //MESSAGE FOR USER UPDATE
+		return "redirect:/user"; //RETURN USER PAGE
 	}
 
 	@PostMapping("/cerrarSesion")
-	public String logout(HttpSession session) throws ServletException {
+	public String logout(HttpSession session) throws ServletException { //LOGOUT OF YOUR SESSION
 		session.removeAttribute("usuario");
 		return "redirect:/";
 	}
 	
 	@PostMapping("/user/cancelarTicket/{id}")
 	public String cancelarTicket(@PathVariable Long id){
-		ticketService.eliminarTicket(id);
-		return "redirect:/user";
+		ticketService.eliminarTicket(id); //DELETE TICKET BY ID FROM TICKETSERVICE
+		return "redirect:/user"; //RETURN USER PAGE
 	}
 	
 }

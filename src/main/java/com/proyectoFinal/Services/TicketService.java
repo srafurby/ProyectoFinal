@@ -15,7 +15,7 @@ public class TicketService {
 	@Autowired
 	private TicketRepository ticketRepository;
 	
-	//Metodo que busca un ticket por DNI
+	//METHOD THAT LOOKS FOR A TICKET BY DNA
 	public List<Ticket> buscarTicketByDni(String dni) {
 
 		List<Ticket> tickets = ticketRepository.findAll();
@@ -30,7 +30,7 @@ public class TicketService {
 
 		return res;
 	}
-	//Metodo que comprueba que no haya tickets de la misma persona en el mismo horario
+	//METHOD THAT CHECKS THAT THERE ARE NO TICKETS FROM THE SAME PERSON AT THE SAME TIME
 	public boolean ticketDuplicado(String Dni, Long id_horario) {
 
 		List<Ticket> tickets = buscarTicketByDni(Dni);
@@ -43,7 +43,7 @@ public class TicketService {
 
 		return false;
 	}
-	//Metodo para comprobar el numero de pasajeros que han comprado un ticket en un horario
+	//METHOD TO CHECK THE NUMBER OF PASSENGERS WHO HAVE BOUGHT A TICKET IN A SCHEDULE
 	public int num_pasajeros_tren(Long id_tren, Long id_horario) {
 		int res = 0;
 
@@ -58,7 +58,8 @@ public class TicketService {
 		return res;
 	}
 
-	public void eliminarTicket(Long id) {
+	//METHOD TO DELETE TICKETS BY ID
+	public void eliminarTicket(Long id) { 
 		ticketRepository.deleteById(id);
 	}
 }
