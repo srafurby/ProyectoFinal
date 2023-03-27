@@ -116,7 +116,7 @@
 			const validPassword = regex.test(password);
 
 			if (!validPassword) {
-				alert("La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial.");
+				alert("The password must have at least 8 characters, one uppercase and one special character");
 				event.preventDefault(); // previene que el formulario se envíe
 			}
 		}
@@ -129,7 +129,7 @@
 			const validDni = regex.test(dni);
 
 			if (!validDni) {
-				alert("El DNI debe de estar compuesto por 9 numeros y una letra final");
+				alert("The DNI must be composed of 8 numbers and a final letter");
 				event.preventDefault(); // previene que el formulario se envíe
 			}
 		}
