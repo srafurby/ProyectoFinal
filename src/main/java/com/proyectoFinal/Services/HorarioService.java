@@ -15,7 +15,7 @@ public class HorarioService {
 	@Autowired
 	private HorarioRepository horarioRepository;
 
-	public void eliminarHorario(Long id) { //METHOD TO DELETE THE SCHEDULES BY ID
+	public void eliminarHorario(Long id) {
 		horarioRepository.deleteById(id);
 	}
 	

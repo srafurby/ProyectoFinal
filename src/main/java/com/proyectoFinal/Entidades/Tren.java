@@ -16,7 +16,6 @@ public class Tren {
 	private Long estacion;
 	private int asientos;
 
-	//CONSTRUCTOR
 	public Tren() {
 	}
 
@@ -27,7 +26,6 @@ public class Tren {
 		this.asientos = asientos;
 	}
 
-	//GETTER AND SETTER
 	public Long getNumero_tren() {
 		return numero_tren;
 	}

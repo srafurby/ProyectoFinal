@@ -11,7 +11,7 @@ public class TrenService {
 	@Autowired
 	private TrenRepository trenRepository;
 
-	public void eliminarTren(Long id) { //METHOD TO DELETE THE TRAIN BY ID
+	public void eliminarTren(Long id) {
 		trenRepository.deleteById(id);
 	}
 }

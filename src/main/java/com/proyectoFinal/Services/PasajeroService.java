@@ -15,7 +15,6 @@ public class PasajeroService {
 	@Autowired
 	private PasajerosRepository pasajeroRepository;
 	
-	//UPDATE INFO OF THE USER
 	public void updatePasajero(String dni, String nombre, String apellidos, LocalDate f_nacimiento, PasajerosRepository pasajerosRepository, HttpSession session) {
 
 		Pasajero pasajero = pasajerosRepository.findByDni(dni);
@@ -28,7 +27,7 @@ public class PasajeroService {
 		
 		session.setAttribute("usuario", pasajero);
 	}
-	public void eliminarPasajero(String id) { //METHOD TO DELETE PASSENGERS BY ID
+	public void eliminarPasajero(String id) {
 		pasajeroRepository.deleteById(id);
 	}
 }

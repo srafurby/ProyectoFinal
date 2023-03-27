@@ -23,28 +23,28 @@ public class HomeController {
 	@GetMapping("/")
 	public String mostrarPaginaInicio(Model model) {
 
-		//LIST OF STATIONS
-		List<Estacion> estaciones = estacionRepository.findAll(); //SEARCHES FOR ALL THE STATIONS IN THE DATABASE AND STORES THEM.
-		model.addAttribute("estaciones", estaciones); //SEND STATIONS TO HTML
+		// LISTA DE ESTACIONES
+		List<Estacion> estaciones = estacionRepository.findAll();
+		model.addAttribute("estaciones", estaciones);
 
-		return "Index"; //RETURNS THE HTML
+		return "Index";
 	}
 
-	@GetMapping("/login_register") //IT TAKES YOU TO THE LOGIN/REGISTER
-	public String mostrarLoginRegister(HttpSession session, Model model) { //SAVE THE SESSION FOR THE NEXT TIME
+	@GetMapping("/login_register")
+	public String mostrarLoginRegister(HttpSession session, Model model) {
 		Pasajero pasajero = (Pasajero) session.getAttribute("usuario");
-		if (pasajero == null) { //KNOW IF YOU ARE ADMIN OR USER
+		if (pasajero == null) {
 			return "login_register";
-		} else if (pasajero.getAdmin()==1) { 
+		} else if (pasajero.getAdmin()==1) {
 			return "redirect:admin";
 		} else {
 			return "redirect:user";
 		}
 	}
 	
-	@PostMapping("/busquedaHorario") //IT IS USED TO COLLECT THE INFORMATION AND TAKE US TO THE TICKETS PAGE BY GIVING THE BUTTON
+	@PostMapping("/busquedaHorario")
 	public String busquedaHorario(@RequestParam("estacionSalida") Long idEstacionSalida,
-			@RequestParam("estacionLlegada") Long idEstacionLlegada, Model model) { //LOOKS FOR THE DEPARTURE AND ARRIVAL STATION AND SAVES THEM
+			@RequestParam("estacionLlegada") Long idEstacionLlegada, Model model) {
 		String url = "/buscadoHorario?estacionSalida=" + idEstacionSalida + "&estacionLlegada=" + idEstacionLlegada;
 	    return "redirect:" + url;
 	}

@@ -49,7 +49,6 @@ public class AdminController {
 	@GetMapping("/admin")
 	public String mostrarPaginaInicio(Model model, HttpSession session) {
 
-		//FIND ALL TRAINS, STATIONS, SCHEDULES AND PASSENGERS
 		List<Tren> trenes = trenRepository.findAll();
 		List<Estacion> estaciones = estacionRepository.findAll();
 		List<Horario> horarios = horarioRepository.findAll();
@@ -63,32 +62,31 @@ public class AdminController {
 		return "admin";
 	}
 
-	//ADD TRAINS, STATIONS, SCHEDULES
-	@PostMapping("/addTrenes") 
-	public String addTren(Model model, @RequestParam(value = "asientos") int asientos, 
-			RedirectAttributes redirectAttributes) { //PASS THE VALUE OF SEATS TO AN INT
-		Tren tren = new Tren(); //CREATE A NEW TRAIN
-		tren.setAsientos(asientos); //CHANGE THE NUMBERS OF SEATS
+	@PostMapping("/addTrenes")
+	public String addTren(Model model, @RequestParam(value = "asientos") int asientos,
+			RedirectAttributes redirectAttributes) {
+		Tren tren = new Tren();
+		tren.setAsientos(asientos);
 		tren.setEstacion((long) 1);
 
-		trenRepository.save(tren); //SAVE THE INFO CHANGED
+		trenRepository.save(tren);
 
-		redirectAttributes.addFlashAttribute("message", "Train Added"); //MESSAGE OF TRAIN ADDED
+		redirectAttributes.addFlashAttribute("message", "Train Added");
 
-		return "redirect:/admin"; //RETURN TO ADMIN PAGE
+		return "redirect:/admin";
 	}
 
 	@PostMapping("/addEstaciones")
 	public String addTren(Model model, @RequestParam(value = "nombreEstacion") String nombreEstacion,
-			RedirectAttributes redirectAttributes) { //PASS THE VALUE OF STATION NAME TO AN STRING
-		Estacion estacion = new Estacion(); //CREATE A NEW STATION
-		estacion.setNombre(nombreEstacion); //CHANGE THE NAME OF THE STATION
+			RedirectAttributes redirectAttributes) {
+		Estacion estacion = new Estacion();
+		estacion.setNombre(nombreEstacion);
 
-		estacionRepository.save(estacion); //SAVE THE INFO CHANGED
+		estacionRepository.save(estacion);
 
-		redirectAttributes.addFlashAttribute("message", "Station Added"); //MESSAGE OF STATION ADDED
+		redirectAttributes.addFlashAttribute("message", "Station Added");
 
-		return "redirect:/admin"; //RETURN TO ADMIN
+		return "redirect:/admin";
 	}
 
 	@PostMapping("/addHorarios")
@@ -96,46 +94,44 @@ public class AdminController {
 			@RequestParam(value = "llegada") double llegada, @RequestParam(value = "tren") long tren,
 			@RequestParam(value = "estacion_salida") Estacion estacion_salida,
 			@RequestParam(value = "estacion_llegada") Estacion estacion_llegada, RedirectAttributes redirectAttributes) {
-		//PASS THE VALUE OF DEPARTURE, ARRIVAL, DEPARTURE STATION AND ARRIVAL STATION TO A DOUBLE AND A LONG.
-		Horario horario = new Horario(); //CREATE A NEW SCHEDULE
-		horario.setSalida(salida); //CHANGE THE TIME OF DEPARTURE
-		horario.setLlegada(llegada); //CHANGE THE TIME OF ARRIVAL
-		horario.setTren(tren); //CHANGE THE TRAIN NUMBER
-		horario.setEstacion_llegada(estacion_llegada); //CHANGE THE ARRIVAL STATION
-		horario.setEstacion_salida(estacion_salida); //CHANGE THE DEPARTURE STATION
+		Horario horario = new Horario();
+		horario.setSalida(salida);
+		horario.setLlegada(llegada);
+		horario.setTren(tren);
+		horario.setEstacion_llegada(estacion_llegada);
+		horario.setEstacion_salida(estacion_salida);
 
-		horarioRepository.save(horario); //SAVE THE INFO CHANGED
+		horarioRepository.save(horario);
 
-		redirectAttributes.addFlashAttribute("message", "Schedule Added"); //MESSAGE OF SCHEDULE ADDED
+		redirectAttributes.addFlashAttribute("message", "Schedule Added");
 
-		return "redirect:/admin"; //RETURN TO ADMIN
+		return "redirect:/admin";
 	}
 
-	//DELETE TRAINS, STATIONS, SCHEDULES AND USERS
 	@PostMapping("/admin/tren/{id}")
-	public String eliminarTren(@PathVariable Long id) { //RECEIVE THE ID
-		trenService.eliminarTren(id); //DELETE IT WITH A METHOD IN TRENSERVICE TO DELETE TRAINS BY ID
+	public String eliminarTren(@PathVariable Long id) {
+		trenService.eliminarTren(id);
 		return "redirect:/admin";
 	}
 
 	@PostMapping("/admin/estacion/{id}")
-	public String eliminarEstacion(@PathVariable Long id) { //RECEIVE THE ID
-		estacionService.eliminarEstacion(id); //DELETE IT WITH A METHOD IN STATIONSERVICE TO DELETE STATIONS BY ID
+	public String eliminarEstacion(@PathVariable Long id) {
+		estacionService.eliminarEstacion(id);
 		return "redirect:/admin";
 	}
 	@PostMapping("/admin/horario/{id}")
-	public String eliminarHorario(@PathVariable Long id) { //RECEIVE THE ID
-		horarioService.eliminarHorario(id); //DELETE IT WITH A METHOD IN SCHEDULESERVICE TO DELETE SCHEDULES BY ID
+	public String eliminarHorario(@PathVariable Long id) {
+		horarioService.eliminarHorario(id);
 		return "redirect:/admin";
 	}
 	@PostMapping("/admin/pasajero/{id}")
-	public String eliminarPasajero(@PathVariable String id) { //RECEIVE THE ID
-		pasajeroService.eliminarPasajero(id); //DELETE IT WITH A METHOD IN PASSENGERSERVICE TO DELETE USERS BY ID
+	public String eliminarPasajero(@PathVariable String id) {
+		pasajeroService.eliminarPasajero(id);
 		return "redirect:/admin";
 	}
-	@PostMapping("/cerrarSesionAdmin") 
-	public String logout(HttpSession session) throws ServletException { 
-		session.removeAttribute("usuario"); //REMOVE THE USER TO BE ABLE TO CLOSE SESSION
+	@PostMapping("/cerrarSesionAdmin")
+	public String logout(HttpSession session) throws ServletException {
+		session.removeAttribute("usuario");
 		return "redirect:/";
 	}
 }

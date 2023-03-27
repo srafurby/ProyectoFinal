@@ -23,7 +23,6 @@ public class Pasajero {
 
 	private String email;
 
-	//CONSTRUCTOR
 	public Pasajero() {
 	}
 
@@ -38,8 +37,7 @@ public class Pasajero {
 		this.pass = pass;
 		this.email = email;
 	}
-	
-	//GETTER AND SETTER
+
 	public String getDni() {
 		return dni;
 	}
@@ -84,7 +82,7 @@ public class Pasajero {
 		return pass;
 	}
 
-	public void setPass(String pass) { //PASSWORD WITH MD5
+	public void setPass(String pass) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			byte[] messageDigest = md.digest(pass.getBytes());

@@ -20,15 +20,14 @@ public class Horario {
 	private double llegada;
 	private Long tren;
 
-	@ManyToOne(fetch = FetchType.EAGER) //THERE CAN BE MANY SCHEDULES ON A SINGLE TRAIN
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_estacion_salida", insertable = true, updatable = false)
 	private Estacion estacion_salida;
 
-	@ManyToOne(fetch = FetchType.EAGER) //THERE CAN BE MANY SCHEDULES ON A SINGLE TRAIN
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_estacion_llegada", insertable = true, updatable = false)
 	private Estacion estacion_llegada;
 
-	//CONSTRUCTOR
 	public Horario() {
 	}
 
@@ -43,7 +42,6 @@ public class Horario {
 		this.estacion_llegada = estacion_llegada;
 	}
 
-	//GETTER AND SETTER
 	public Long getID_horario() {
 		return ID_horario;
 	}

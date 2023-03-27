@@ -20,14 +20,13 @@ public class LoginRegisterController {
 	@Autowired
 	private PasajerosRepository pasajerosRepository;
 
-	//LOGIN
-	@PostMapping("/pasajerosLogin") 
+	@PostMapping("/pasajerosLogin")
 	public String loginUsuario(@RequestParam String loginEmail, @RequestParam String loginPassword, HttpSession session,
 			Model model) {
 
-		Pasajero pasajero = pasajerosRepository.findByEmail(loginEmail); //LOOK FOR THE PASSENGER BY MAIL
+		Pasajero pasajero = pasajerosRepository.findByEmail(loginEmail);
 
-		if (pasajero != null) { //SAVES THE PASSWORD IN THE DATABASE ENCRYPTED BY MD5
+		if (pasajero != null) {
 			try {
 				MessageDigest md = MessageDigest.getInstance("MD5");
 				byte[] messageDigest = md.digest(loginPassword.getBytes());
@@ -35,54 +34,52 @@ public class LoginRegisterController {
 				for (byte b : messageDigest) {
 					sb.append(String.format("%02x", b));
 				}
-				String passMD5 = sb.toString(); 
+				String passMD5 = sb.toString();
 
-				//COMPARE THE PASSWORD SET WITH THE PASSWORD IN THE DATABASE
 				if (passMD5.equals(pasajero.getPass())) {
-					session.setAttribute("usuario", pasajero); //I SAVE THE USER IN THE SESSION
-					if (pasajero.getAdmin()==1) { //I CHECK IF IT IS ADMIN OR USER
+					session.setAttribute("usuario", pasajero);
+					if (pasajero.getAdmin()==1) {
 						return "redirect:admin";
 					} else {
 						return "redirect:user";
 					}
-				} else { //ERROR EMAIL OR PASSWORD WRONG OR EMPTY
+				} else {
 					model.addAttribute("pasajeroError",
 							"There is no user registered with that email or the password is incorrect");
 					return "login_register";
 				}
-			} catch (NoSuchAlgorithmException e) { 
+			} catch (NoSuchAlgorithmException e) {
 				throw new RuntimeException(e);
 			}
 
-		} else { //ERROR EMAIL OR PASSWORD WRONG OR EMPTY
+		} else {
 			model.addAttribute("pasajeroError",
 					"There is no user registered with that email or the password is incorrect");
 			return "login_register";
 		}
 	}
 
-	//REGISTER
 	@PostMapping("/pasajerosRegister")
 	public String registrarUsuario(@ModelAttribute Pasajero pasajero, Model model) {
-		//CHECK IF THERE IS ALREADY A USER WITH THE SAME ID
+		// Verificar si ya existe un usuario con el mismo dni
 		Pasajero pasajeroDni = pasajerosRepository.findByDni(pasajero.getDni());
 		if (pasajeroDni != null) {
 			model.addAttribute("dniError", "There is already a user with that ID");
 			return "login_register";
 		}
 
-		//VERIFY IF A USER WITH THE SAME EMAIL ALREADY EXIST
+		// Verificar si ya existe un usuario con el mismo email
 		Pasajero pasajeroEmail = pasajerosRepository.findByEmail(pasajero.getEmail());
 		if (pasajeroEmail != null) {
 			model.addAttribute("emailError", "There is already a user with that Email");
 			return "login_register";
 		}
 
-		//SAVE THE NEW USER IN THE DATABASE
+		// Guardar el nuevo usuario en la base de datos
 		pasajero.setAdmin(0);
 		pasajerosRepository.save(pasajero);
 
-		//REDIRECT USER TO HOME PAGE
+		// Redirigir al usuario a la página de inicio
 		return "redirect:/";
 	}
 }
