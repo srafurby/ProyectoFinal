@@ -85,7 +85,8 @@
 								th:onclick="'confirmarEliminacionTren('+${tren.numero_tren}+')'">Remove</button>
 						</div>
 						<div class="modify">
-							<button type="submit" id="modifyTren">Modify</button>
+							<button type="submit" id="modifyTren"
+								th:onclick="'mostrarModifyTrenes('+${tren.numero_tren}+')'">Modify</button>
 						</div>
 					</div>
 					<span class="divider"></span>
@@ -112,7 +113,8 @@
 								th:onclick="'confirmarEliminacionEstacion('+${estacion.ID_estacion}+')'">Remove</button>
 						</div>
 						<div class="modify">
-							<button type="submit" id="modifyEstacion">Modify</button>
+							<button type="submit" id="modifyEstacion"
+								th:onclick="'mostrarModifyEstaciones('+${estacion.ID_estacion}+')'">Modify</button>
 						</div>
 					</div>
 					<span class="divider"></span>
@@ -154,7 +156,8 @@
 								th:onclick="'confirmarEliminacionHorario('+${horario.ID_horario}+')'">Remove</button>
 						</div>
 						<div class="modify">
-							<button type="submit" id="modifyHorario">Modify</button>
+							<button type="submit" id="modifyHorario"
+								th:onclick="'mostrarModifyHorarios('+${horario.ID_horario}+')'">Modify</button>
 						</div>
 					</div>
 					<span class="divider"></span>
@@ -194,15 +197,35 @@
 			<div class="container">
 				<div class="row datos">
 					<form name="addTrenes" method="post" th:action="@{/addTrenes}">
-						<h1>ADD Train</h1>
+						<h1>Add Train</h1>
 						<div class="form-floating">
 							<input type="number" class="form-control" id="asientos"
 								name="asientos" placeholder="50" required> <label
-								for="floatingInput">Numer of Seats</label>
+								for="floatingInput">Number of Seats</label>
 						</div>
 						<br>
 						<button class="w-50 btn btn-lg btn-primary" type="submit"
 							id="addTrenButton">Send</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<section class="tablas" id="modifyTrenes">
+			<div class="container">
+				<div class="row datos">
+					<form name="modifyTrenes" method="post"
+						th:action="@{/modifyTrenes}">
+						<h1>Modify Train</h1>
+						<div class="form-floating">
+							<input type="hidden" value="" id="idModifyTren"
+								name="idModifyTren"> <input type="number"
+								class="form-control" id="asientos" name="asientos"
+								placeholder="50" required> <label for="floatingInput">Number
+								of Seats</label>
+						</div>
+						<br>
+						<button class="w-50 btn btn-lg btn-primary" type="submit"
+							id="modifyTrenButton">Edit</button>
 					</form>
 				</div>
 			</div>
@@ -212,7 +235,7 @@
 				<div class="row datos">
 					<form name="addEstaciones" method="post"
 						th:action="@{/addEstaciones}">
-						<h1>ADD Station</h1>
+						<h1>Add Station</h1>
 						<div class="form-floating">
 							<input type="text" class="form-control" id="nombreEstacion"
 								name="nombreEstacion" placeholder="50" required> <label
@@ -225,11 +248,31 @@
 				</div>
 			</div>
 		</section>
+		<section class="tablas" id="modifyEstaciones">
+			<div class="container">
+				<div class="row datos">
+					<form name="modifyEstaciones" method="post"
+						th:action="@{/modifyEstaciones}">
+						<h1>Modify Station</h1>
+						<div class="form-floating">
+							<input type="hidden" value="" id="idModifyEstacion"
+								name="idModifyEstacion"> <input type="text"
+								class="form-control" id="nombreEstacion" name="nombreEstacion"
+								placeholder="50" required> <label for="floatingInput">Name
+								of Station</label>
+						</div>
+						<br>
+						<button class="w-50 btn btn-lg btn-primary" type="submit"
+							id="modifyEstacionButton">Edit</button>
+					</form>
+				</div>
+			</div>
+		</section>
 		<section class="tablas" id="addHorarios">
 			<div class="container">
 				<div class="row datos">
 					<form name="addHorarios" method="post" th:action="@{/addHorarios}">
-						<h1>ADD Schedule</h1>
+						<h1>Add Schedule</h1>
 						<div class="form-floating">
 							<input type="number" class="form-control" id="salida"
 								name="salida" placeholder="20.00" required> <label
@@ -267,6 +310,51 @@
 				</div>
 			</div>
 		</section>
+		<section class="tablas" id="modifyHorarios">
+			<div class="container">
+				<div class="row datos">
+					<form name="modifyHorarios" method="post"
+						th:action="@{/modifyHorarios}">
+						<h1>Modify Schedule</h1>
+						<input type="hidden" value="" id="idModifyHorario"
+							name="idModifyHorario">
+						<div class="form-floating">
+							<input type="number" class="form-control" id="salida"
+								name="salida" placeholder="20.00" required> <label
+								for="floatingInput">Departure time</label>
+						</div>
+						<div class="form-floating">
+							<input type="number" class="form-control" id="llegada"
+								name="llegada" placeholder="21.00" required> <label
+								for="floatingInput">Arrival time</label>
+						</div>
+						<div class="form-floating">
+							<select class="form-control" id="tren" name="tren" required>
+								<option th:each="tren : ${trenes}"
+									th:value="${tren.numero_tren}" th:text="${tren.numero_tren}"></option>
+							</select> <label for="floatingSelect">Train Assigned</label>
+						</div>
+						<div class="form-floating">
+							<select class="form-control" id="estacion_salida"
+								name="estacion_salida" required>
+								<option th:each="estacion : ${estaciones}"
+									th:value="${estacion.ID_estacion}" th:text="${estacion.nombre}"></option>
+							</select> <label for="floatingSelect">Departure Station</label>
+						</div>
+						<div class="form-floating">
+							<select class="form-control" id="estacion_llegada"
+								name="estacion_llegada" required>
+								<option th:each="estacion : ${estaciones}"
+									th:value="${estacion.ID_estacion}" th:text="${estacion.nombre}"></option>
+							</select> <label for="floatingSelect">Arrival Station</label>
+						</div>
+						<br>
+						<button class="w-50 btn btn-lg btn-primary" type="submit"
+							id="modifyHorarioButton">Edit</button>
+					</form>
+				</div>
+			</div>
+		</section>
 		<div th:if="${message}" class="alert alert-success" role="alert"
 			id="alerta">
 			<span th:text="${message}"></span>
@@ -277,7 +365,6 @@
 			}, 5000); // 5000 milisegundos = 5 segundos
 		</script>
 	</main>
-
 	<footer>
 		<p>&copy; Railway Granada 2023</p>
 	</footer>

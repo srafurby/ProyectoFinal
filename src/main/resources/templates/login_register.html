@@ -52,6 +52,12 @@
 		<div th:if="${pasajeroError}" class="alert alert-danger" role="alert">
 			<span th:text="${pasajeroError}"></span>
 		</div>
+		<div th:if="${emailError}" class="alert alert-danger" role="alert">
+			<span th:text="${emailError}"></span>
+		</div>
+		<div th:if="${dniError}" class="alert alert-danger" role="alert">
+			<span th:text="${dniError}"></span>
+		</div>
 		<div class="container">
 			<form name="register" method="post" th:action="@{/pasajerosRegister}">
 				<div class="text">
@@ -91,12 +97,6 @@
 				<button class="w-50 btn btn-lg btn-primary" type="submit"
 					id="signupBtn">Sign up</button>
 			</form>
-		</div>
-		<div th:if="${emailError}" class="alert alert-danger" role="alert">
-			<span th:text="${emailError}"></span>
-		</div>
-		<div th:if="${dniError}" class="alert alert-danger" role="alert">
-			<span th:text="${dniError}"></span>
 		</div>
 		<p class="mt-5 mb-3 text-muted">&copy; 2018–2023</p>
 	</main>

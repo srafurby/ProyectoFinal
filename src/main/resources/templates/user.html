@@ -194,7 +194,7 @@
 				</div>
 				<div class="row">
 					<div class="col-12 delete">
-						<button type="submit" id="deleteBtn">Delete account</button>
+						<button type="submit" id="deleteBtn" th:data-parameter1="${pasajero.dni}" th:onclick="confirmarEliminacionPasajero(this.getAttribute('data-parameter1'))">Delete account</button>
 					</div>
 				</div>
 			</div>

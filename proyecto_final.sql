@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2023 a las 00:43:25
+-- Tiempo de generación: 28-03-2023 a las 21:47:34
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.1
 
@@ -44,7 +44,7 @@ INSERT INTO `estacion` (`ID_estacion`, `nombre`) VALUES
 (5, 'Salobreña'),
 (6, 'Alhama de Granada'),
 (7, 'Guadix'),
-(9, 'Cuenquilla');
+(9, 'Cuenca');
 
 -- --------------------------------------------------------
 
@@ -66,11 +66,10 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`id_horario`, `salida`, `llegada`, `tren`, `id_estacion_salida`, `id_estacion_llegada`) VALUES
-(1, '20.00', '21.00', 1, 1, 2),
+(1, '20.00', '21.00', 3, 1, 2),
 (3, '21.00', '22.00', 2, 1, 3),
 (4, '21.00', '22.00', 3, 1, 2),
-(5, '17.00', '18.00', 16, 1, 4),
-(6, '17.00', '19.00', 3, 2, 9);
+(5, '17.00', '18.00', 16, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -95,8 +94,7 @@ CREATE TABLE `pasajeros` (
 INSERT INTO `pasajeros` (`dni`, `nombre`, `apellidos`, `f_nacimiento`, `admin`, `pass`, `email`) VALUES
 ('00000000A', 'Admin', 'Admin', '2000-01-01', 1, 'fd33fd0ddd42912e650d73a0451ba04e', 'admin@railwaygranada.es'),
 ('55222826P', 'maria', 'avellanedas', '2000-07-06', 0, '7d2a5e38a619d336d6efd6c5a41c1883', 'mariaavellanedas@gmail.com'),
-('75938441P', 'jose', 'manuel', '1999-09-21', 0, '5364a5347a086c393cf801af3600910b', 'paco@correo.es'),
-('77552128S', 'Jose', 'Ramos', '1999-02-09', 0, 'fd33fd0ddd42912e650d73a0451ba04e', 'jose@gmail.com');
+('75938441P', 'jose', 'manuel', '1999-09-21', 0, '5364a5347a086c393cf801af3600910b', 'paco@correo.es');
 
 -- --------------------------------------------------------
 
@@ -111,15 +109,6 @@ CREATE TABLE `ticket` (
   `id_horario` bigint(20) UNSIGNED NOT NULL,
   `precio` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `ticket`
---
-
-INSERT INTO `ticket` (`id_ticket`, `pasajero`, `id_tren`, `id_horario`, `precio`) VALUES
-(1, '77552128S', 1, 1, 14),
-(2, '77552128S', 2, 3, 21),
-(7, '77552128S', 16, 5, 14);
 
 -- --------------------------------------------------------
 
@@ -138,7 +127,7 @@ CREATE TABLE `tren` (
 --
 
 INSERT INTO `tren` (`numero_tren`, `asientos`, `estacion`) VALUES
-(1, 50, 1),
+(1, 24, 1),
 (2, 55, 1),
 (3, 60, 1),
 (16, 2, 1),
@@ -202,13 +191,13 @@ ALTER TABLE `estacion`
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_horario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id_ticket` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_ticket` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `tren`
@@ -232,7 +221,7 @@ ALTER TABLE `horario`
 -- Filtros para la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  ADD CONSTRAINT `dni_ticket_pasajero` FOREIGN KEY (`pasajero`) REFERENCES `pasajeros` (`dni`) ON DELETE CASCADE,
+  ADD CONSTRAINT `dni_ticket_pasajero` FOREIGN KEY (`pasajero`) REFERENCES `pasajeros` (`dni`),
   ADD CONSTRAINT `id_ticket_horario` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`),
   ADD CONSTRAINT `id_ticket_tren` FOREIGN KEY (`id_tren`) REFERENCES `tren` (`numero_tren`);
 COMMIT;

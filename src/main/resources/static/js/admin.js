@@ -1,50 +1,39 @@
 window.onload = function() {
+	ocultarTodo();
+	mostrarTrenes();
+}
+
+function ocultarTodo() {
+	document.getElementById("trenes").style.display = 'none';
 	document.getElementById("estaciones").style.display = 'none';
 	document.getElementById("horarios").style.display = 'none';
 	document.getElementById("usuarios").style.display = 'none';
 	document.getElementById("addTrenes").style.display = 'none';
 	document.getElementById("addEstaciones").style.display = 'none';
 	document.getElementById("addHorarios").style.display = 'none';
+	document.getElementById("modifyTrenes").style.display = 'none';
+	document.getElementById("modifyEstaciones").style.display = 'none';
+	document.getElementById("modifyHorarios").style.display = 'none';
 }
 
 function mostrarTrenes() {
+	ocultarTodo();
 	document.getElementById("trenes").style.display = 'flex';
-	document.getElementById("estaciones").style.display = 'none';
-	document.getElementById("horarios").style.display = 'none';
-	document.getElementById("usuarios").style.display = 'none';
-	document.getElementById("addTrenes").style.display = 'none';
-	document.getElementById("addEstaciones").style.display = 'none';
-	document.getElementById("addHorarios").style.display = 'none';
 }
 
 function mostrarEstaciones() {
+	ocultarTodo();
 	document.getElementById("estaciones").style.display = 'flex';
-	document.getElementById("trenes").style.display = 'none';
-	document.getElementById("horarios").style.display = 'none';
-	document.getElementById("usuarios").style.display = 'none';
-	document.getElementById("addTrenes").style.display = 'none';
-	document.getElementById("addEstaciones").style.display = 'none';
-	document.getElementById("addHorarios").style.display = 'none';
 }
 
 function mostrarHorarios() {
+	ocultarTodo();
 	document.getElementById("horarios").style.display = 'flex';
-	document.getElementById("estaciones").style.display = 'none';
-	document.getElementById("trenes").style.display = 'none';
-	document.getElementById("usuarios").style.display = 'none';
-	document.getElementById("addTrenes").style.display = 'none';
-	document.getElementById("addEstaciones").style.display = 'none';
-	document.getElementById("addHorarios").style.display = 'none';
 }
 
 function mostrarUsuarios() {
+	ocultarTodo();
 	document.getElementById("usuarios").style.display = 'flex';
-	document.getElementById("estaciones").style.display = 'none';
-	document.getElementById("horarios").style.display = 'none';
-	document.getElementById("trenes").style.display = 'none';
-	document.getElementById("addTrenes").style.display = 'none';
-	document.getElementById("addEstaciones").style.display = 'none';
-	document.getElementById("addHorarios").style.display = 'none';
 }
 
 function mostrarAddTrenes() {
@@ -71,19 +60,49 @@ function mostrarAddHorarios() {
 	}
 }
 
+function mostrarModifyTrenes(idTren) {
+	if (document.getElementById("modifyTrenes").style.display == 'none') {
+		document.getElementById("idModifyTren").value = idTren;
+		document.getElementById("modifyTrenes").style.display = 'flex';
+	} else {
+		document.getElementById("modifyTrenes").style.display = 'none';
+	}
+}
 
-function confirmarEliminacionTren(idTren) {
+function mostrarModifyEstaciones(idEstacion) {
+	if (document.getElementById("modifyEstaciones").style.display == 'none') {
+		document.getElementById("idModifyEstacion").value = idEstacion;
+		document.getElementById("modifyEstaciones").style.display = 'flex';
+	} else {
+		document.getElementById("modifyEstaciones").style.display = 'none';
+	}
+}
+
+function mostrarModifyHorarios(idHorario) {
+	if (document.getElementById("modifyHorarios").style.display == 'none') {
+		document.getElementById("idModifyHorario").value = idHorario;
+		document.getElementById("modifyHorarios").style.display = 'flex';
+	} else {
+		document.getElementById("modifyHorarios").style.display = 'none';
+	}
+}
+
+function confirmarEliminacionTren(idTren) { //IF DELETE BUTTON HAS PRESSED RECEIVES THE ID
 	if (confirm("Are you sure to delete the Train? This action cant be reverted")) {
 		eliminarTren(idTren);
 	}
 }
 
 function eliminarTren(idTren) {
-	$.ajax({
-		url: "/admin/tren/" + idTren,
+	$.ajax({//AJAX FUNCTION FOR DELETE TRAIN
+		url: "/admin/tren/" + idTren, //SEND THE URL TO SPRINGBOOT WHIT THE ID OF THE TRAIN
 		type: "POST",
-		success: function() {
+		success: function() {//IF RECEIVE OK FROM SPRINGBOOT REDIRECT TO ADMIN PAGE
+			alert("Train Deleted");
 			window.location.href = "/admin";
+		},
+		error: function(jqXHR, textStatus, errorThrown) {//IF YOU RECEIVE AN ERROR IT SHOWS IN AN ALERT
+			alert(jqXHR.responseText);
 		}
 	});
 }
@@ -99,7 +118,11 @@ function eliminarEstacion(idEstacion) {
 		url: "/admin/estacion/" + idEstacion,
 		type: "POST",
 		success: function() {
+			alert("Station Deleted");
 			window.location.href = "/admin";
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.responseText);
 		}
 	});
 }
@@ -115,7 +138,11 @@ function eliminarHorario(idHorario) {
 		url: "/admin/horario/" + idHorario,
 		type: "POST",
 		success: function() {
+			alert("Schedule Deleted");
 			window.location.href = "/admin";
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.responseText);
 		}
 	});
 }
@@ -131,7 +158,11 @@ function eliminarPasajero(idPasajero) {
 		url: "/admin/pasajero/" + idPasajero,
 		type: "POST",
 		success: function() {
+			alert("User Deleted");
 			window.location.href = "/admin";
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.responseText);
 		}
 	});
 }

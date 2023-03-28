@@ -92,3 +92,23 @@ function cancelarTicket(idTicket) {
 		}
 	});
 }
+
+function confirmarEliminacionPasajero(idPasajero) {
+	if (confirm("Are you sure to delete your User account? This action cant be reverted")) {
+		eliminarPasajero(idPasajero);
+	}
+}
+
+function eliminarPasajero(idPasajero) {
+	$.ajax({
+		url: "/user/delete/" + idPasajero,
+		type: "POST",
+		success: function() {
+			alert("User Account Deleted");
+			window.location.href = "/";
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.responseText);
+		}
+	});
+}
